@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basketball Simulator</title>
+    <link href="minimal-table.css" rel="stylesheet" type="text/css">
+   
+  </head>
+  <body>
+
+<script type="text/javascript"> 
+
+  function displayStats()
+{
+  document.getElementById("playerOne").innerHTML = player1.name;
+  document.getElementById("playerOnePoints").innerHTML = player1.points;
+  document.getElementById("playerOneRebounds").innerHTML = player1.rebounds;
+  document.getElementById("playerOneAssists").innerHTML = player1.assists;
+  document.getElementById("playerTwo").innerHTML = player2.name;
+  document.getElementById("playerTwoPoints").innerHTML = player2.points;
+  document.getElementById("playerTwoRebounds").innerHTML = player2.rebounds;
+  document.getElementById("playerTwoAssists").innerHTML = player2.assists;
+  document.getElementById("playerThree").innerHTML = player3.name;
+  document.getElementById("playerThreePoints").innerHTML = player3.points;
+  document.getElementById("playerThreeRebounds").innerHTML = player3.rebounds;
+  document.getElementById("playerThreeAssists").innerHTML = player3.assists;
+  document.getElementById("playerFour").innerHTML = player4.name;
+  document.getElementById("playerFourPoints").innerHTML = player4.points;
+  document.getElementById("playerFourRebounds").innerHTML = player4.rebounds;
+  document.getElementById("playerFourAssists").innerHTML = player4.assists;
+  document.getElementById("playerFive").innerHTML = player5.name;
+  document.getElementById("playerFivePoints").innerHTML = player5.points;
+  document.getElementById("playerFiveRebounds").innerHTML = player5.rebounds;
+  document.getElementById("playerFiveAssists").innerHTML = player5.assists;
+
+  document.getElementById("playerSix").innerHTML = player6.name;
+  document.getElementById("playerSixPoints").innerHTML = player6.points;
+  document.getElementById("playerSixRebounds").innerHTML = player6.rebounds;
+  document.getElementById("playerSixAssists").innerHTML = player6.assists;
+  document.getElementById("playerSeven").innerHTML = player7.name;
+  document.getElementById("playerSevenPoints").innerHTML = player7.points;
+  document.getElementById("playerSevenRebounds").innerHTML = player7.rebounds;
+  document.getElementById("playerSevenAssists").innerHTML = player7.assists;
+  document.getElementById("playerEight").innerHTML = player8.name;
+  document.getElementById("playerEightPoints").innerHTML = player8.points;
+  document.getElementById("playerEightRebounds").innerHTML = player8.rebounds;
+  document.getElementById("playerEightAssists").innerHTML = player8.assists;
+  document.getElementById("playerNine").innerHTML = player9.name;
+  document.getElementById("playerNinePoints").innerHTML = player9.points;
+  document.getElementById("playerNineRebounds").innerHTML = player9.rebounds;
+  document.getElementById("playerNineAssists").innerHTML = player9.assists;
+  document.getElementById("playerTen").innerHTML = player10.name;
+  document.getElementById("playerTenPoints").innerHTML = player10.points;
+  document.getElementById("playerTenRebounds").innerHTML = player10.rebounds;
+  document.getElementById("playerTenAssists").innerHTML = player10.assists;
+}
+
+function displayScore()
+{
+    document.getElementById("teamOneScore").innerHTML = team1.score1;
+    document.getElementById("teamTwoScore").innerHTML = team2.score2;
+}
+
+  function startButton() 
+{
+  jumpBall();
+  displayScore();
+  displayStats();
+  winner();
+//document.getElementById("myText").innerHTML = player1.name;
+}
+
+function resetButton()
+{
+   reset();
+   displayStats();
+   displayScore();
+   winner();
+}
+
+function winner()
+{
+  if (team1.score1 > team2.score2)
+  {
+  document.getElementById("winner").innerHTML = "Team 1 wins it!"
+  } else if (team1.score1 == team2.score2)
+  {
+  document.getElementById("winner").innerHTML = "";
+  } else 
+  {
+  document.getElementById("winner").innerHTML = "Team 2 wins it!"
+  }
+}
+
+</script>
+
+    <h1>Basketball Simulator</h1>
+
+    <h2> Team 1: <span id="teamOneScore"> </span> </h2>  
+    <h2> Team 2: <span id="teamTwoScore"> </span></h2>  
+
+   <h3> <span id="winner"></span> </h3>   
+
+<div >
+   <button onclick="startButton()"> Start Game </button>
+   <button onclick="resetButton()"> Reset </button>
+</div>
+     
+    <table id="boxScore">
+      <tr>
+        <td> <b> Team 1 </b> </td>
+        <td> <b> Points </b> </td>
+        <td> <b> Rebounds </b> </td>
+        <td> <b> Assists </b> </td>
+      </tr>
+      <tr>
+        <td><span id ="playerOne"> </span></td>
+        <td><span id ="playerOnePoints"> </span></td>
+        <td><span id ="playerOneRebounds"> </span></td>
+        <td><span id ="playerOneAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerTwo"> </span></td>
+        <td><span id ="playerTwoPoints"> </span></td>
+        <td><span id ="playerTwoRebounds"> </span></td>
+        <td><span id ="playerTwoAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerThree"> </span></td>
+        <td><span id ="playerThreePoints"> </span></td>
+        <td><span id ="playerThreeRebounds"> </span></td>
+        <td><span id ="playerThreeAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerFour"> </span></td>
+        <td><span id ="playerFourPoints"> </span></td>
+        <td><span id ="playerFourRebounds"> </span></td>
+        <td><span id ="playerFourAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerFive"> </span></td>
+        <td><span id ="playerFivePoints"> </span></td>
+        <td><span id ="playerFiveRebounds"> </span></td>
+        <td><span id ="playerFiveAssists"> </span></td>
+      </tr>
+
+      <tr>
+        <td> <b> Team 2 </b> </td>
+        <td> <b> Points </b> </td>
+        <td> <b> Rebounds </b> </td>
+        <td> <b> Assists </b> </td>
+      </tr>
+      <tr>
+        <td><span id ="playerSix"> </span></td>
+        <td><span id ="playerSixPoints"> </span></td>
+        <td><span id ="playerSixRebounds"> </span></td>
+        <td><span id ="playerSixAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerSeven"> </span></td>
+        <td><span id ="playerSevenPoints"> </span></td>
+        <td><span id ="playerSevenRebounds"> </span></td>
+        <td><span id ="playerSevenAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerEight"> </span></td>
+        <td><span id ="playerEightPoints"> </span></td>
+        <td><span id ="playerEightRebounds"> </span></td>
+        <td><span id ="playerEightAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerNine"> </span></td>
+        <td><span id ="playerNinePoints"> </span></td>
+        <td><span id ="playerNineRebounds"> </span></td>
+        <td><span id ="playerNineAssists"> </span></td>
+      </tr>
+      <tr>
+        <td><span id ="playerTen"> </span></td>
+        <td><span id ="playerTenPoints"> </span></td>
+        <td><span id ="playerTenRebounds"> </span></td>
+        <td><span id ="playerTenAssists"> </span></td>
+      </tr>
+
+    </table>
+  </body>
+<script type="text/javascript" src="bball.js"></script>
+</html>

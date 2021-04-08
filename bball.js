@@ -1,12 +1,20 @@
-function Player(name, attr) {
+// ADDED ASSISTS
+//MYSQL DATABASE EVENTUALLY?
+//RandomPlayer() weighted heavier to stars
+// TENDENCIES INTO CHOOSEOFFENCE(PLAYER)  rand < player.passTend   
+// SUBS - minutes, coach strategy etc....
+function Player(name, passing, twoP, threeP, tend) {
   this.name = name;
-  this.shooting = attr;  //can add 2pt and 3pt and layUp
-  this.dribbling = attr;
-  this.passing = attr;
-  this.points = 0;   // could make these part of a copy object for encapsulation? 
+  this.twoPointers = twoP;
+  this.threePointers = threeP;
+ // this.dribbling = attr;   // am I going to add this?
+  this.passing = passing;
+  this.passTendency = tend;
+  this.points = 0;   
   this.defensiveRebounds = 0;
   this.offensiveRebounds = 0;
   this.rebounds = 0;
+  this.assists = 0;
   this.fieldGoalsAttempted = 0;
   this.fieldGoalsMade = 0;
   this.fieldGoalPercentage = 0;
@@ -16,209 +24,332 @@ function Player(name, attr) {
   this.threePointsAttempted = 0;
   this.threePointsMade = 0;
   this.threePointPercentage = 0;
-  //function to calc field goal %, can't have at instatiation
 }
 
-var player1 = new Player('Baron Davis', 5);
-var player2 = new Player('Kevin Martin', 5);
-var player3 = new Player('J.R Smith', 5);
-var player4 = new Player('Ryan Anderson', 5);
-var player5 = new Player('Mehmet Okur', 5);
+var player1 = new Player('Baron Davis', 8, 5, 6, 9);
+var player2 = new Player('Kevin Martin', 10, 6, 8, 5);
+var player3 = new Player('J.R Smith', 7, 7, 7, 4);
+var player4 = new Player('Ryan Anderson', 8, 6, 7, 4);
+var player5 = new Player('Mehmet Okur', 6, 7, 8, 4);
 
-var player6 = new Player('John Stickton', 5);
-var player7 = new Player('Toby Bryant', 5);
-var player8 = new Player('Labrun James', 5);
-var player9 = new Player('Jim Duncan', 5);
-var player10 = new Player('Bill Wilton', 5);
+var player6 = new Player('John Stickton', 10, 9, 8, 9);
+var player7 = new Player('Toby Bryant', 8, 8, 8, 2);
+var player8 = new Player('Labrun James', 10, 8, 7, 7);
+var player9 = new Player('Jim Duncan', 8, 9, 4, 3);
+var player10 = new Player('Bill Wilton', 10, 8, 3, 8);
 
 let score1 = 0;
 let score2 = 0;
-let target = 50;
+let target = 100;
 
 // could the team objects contain the functions?
 let team1 = {player1, player2, player3, player4, player5, score1};
 let team2 = {player6, player7, player8, player9, player10, score2};
 let possession = 0;
+let assister = 0;
 
 function printStats(obj) 
 {
  console.log("Name: " + obj.name + " Points: " + obj.points + " Rebounds: " + obj.rebounds 
- 	+ " ORB: " + obj.offensiveRebounds + " DRB: " + obj.defensiveRebounds + " FGA: " + obj.fieldGoalsAttempted 
- 	+ " FGM: " + obj.fieldGoalsMade + " FG%: " + obj.fieldGoalPercentage + " 2PA: " 
- 	+ obj.twoPointsAttempted + " 2PM: " + obj.twoPointsMade + " 2P%: " + obj.twoPointPercentage 
- 	+ " 3PA: " + obj.threePointsAttempted + " 3PM: " + obj.threePointsMade + " 3P%: " 
- 	+ obj.threePointPercentage);
+  + " ORB: " + obj.offensiveRebounds + " DRB: " + obj.defensiveRebounds + " FGA: " + obj.fieldGoalsAttempted 
+  + " FGM: " + obj.fieldGoalsMade + " FG%: " + obj.fieldGoalPercentage + " 2PA: " 
+  + obj.twoPointsAttempted + " 2PM: " + obj.twoPointsMade + " 2P%: " + obj.twoPointPercentage 
+  + " 3PA: " + obj.threePointsAttempted + " 3PM: " + obj.threePointsMade + " 3P%: " 
+  + obj.threePointPercentage);
 }
+
+function reset()
+{
+ player1.points = 0; player1.defensiveRebounds = 0;player1.offensiveRebounds = 0; player1.rebounds = 0;
+  player1.assists = 0;player1.fieldGoalsAttempted = 0;player1.fieldGoalsMade = 0; player1.fieldGoalPercentage = 0; player1.twoPointsAttempted = 0;
+  player1.twoPointsMade = 0; player1.twoPointPercentage = 0; player1.threePointsAttempted = 0; player1.threePointsMade = 0;
+  player1.threePointPercentage = 0;
+ player2.points = 0; player2.defensiveRebounds = 0;player2.offensiveRebounds = 0; player2.rebounds = 0;
+  player2.assists = 0;player2.fieldGoalsAttempted = 0;player2.fieldGoalsMade = 0; player2.fieldGoalPercentage = 0; player2.twoPointsAttempted = 0;
+  player2.twoPointsMade = 0; player2.twoPointPercentage = 0; player2.threePointsAttempted = 0; player2.threePointsMade = 0;
+  player2.threePointPercentage = 0;
+ player3.points = 0; player3.defensiveRebounds = 0;player3.offensiveRebounds = 0; player3.rebounds = 0;
+  player3.assists = 0;player3.fieldGoalsAttempted = 0;player3.fieldGoalsMade = 0; player3.fieldGoalPercentage = 0; player3.twoPointsAttempted = 0;
+  player3.twoPointsMade = 0; player3.twoPointPercentage = 0; player3.threePointsAttempted = 0; player3.threePointsMade = 0;
+  player3.threePointPercentage = 0;
+ player4.points = 0; player4.defensiveRebounds = 0;player4.offensiveRebounds = 0; player4.rebounds = 0;
+  player4.assists = 0;player4.fieldGoalsAttempted = 0;player4.fieldGoalsMade = 0; player4.fieldGoalPercentage = 0; player4.twoPointsAttempted = 0;
+  player4.twoPointsMade = 0; player4.twoPointPercentage = 0; player4.threePointsAttempted = 0; player4.threePointsMade = 0;
+  player4.threePointPercentage = 0;
+player5.points = 0; player5.defensiveRebounds = 0;player5.offensiveRebounds = 0; player5.rebounds = 0;
+  player5.assists = 0;player5.fieldGoalsAttempted = 0;player5.fieldGoalsMade = 0; player5.fieldGoalPercentage = 0; player5.twoPointsAttempted = 0;
+  player5.twoPointsMade = 0; player5.twoPointPercentage = 0; player5.threePointsAttempted = 0; player5.threePointsMade = 0;
+  player5.threePointPercentage = 0;
+player6.points = 0; player6.defensiveRebounds = 0;player6.offensiveRebounds = 0; player6.rebounds = 0;
+  player6.assists = 0;player6.fieldGoalsAttempted = 0;player6.fieldGoalsMade = 0; player6.fieldGoalPercentage = 0; player6.twoPointsAttempted = 0;
+  player6.twoPointsMade = 0; player6.twoPointPercentage = 0; player6.threePointsAttempted = 0; player6.threePointsMade = 0;
+  player6.threePointPercentage = 0;
+player7.points = 0; player7.defensiveRebounds = 0;player7.offensiveRebounds = 0; player7.rebounds = 0;
+  player7.assists = 0;player7.fieldGoalsAttempted = 0;player7.fieldGoalsMade = 0; player7.fieldGoalPercentage = 0; player7.twoPointsAttempted = 0;
+  player7.twoPointsMade = 0; player7.twoPointPercentage = 0; player7.threePointsAttempted = 0; player7.threePointsMade = 0;
+  player7.threePointPercentage = 0;
+player8.points = 0; player8.defensiveRebounds = 0;player8.offensiveRebounds = 0; player8.rebounds = 0;
+  player8.assists = 0;player5.fieldGoalsAttempted = 0;player8.fieldGoalsMade = 0; player8.fieldGoalPercentage = 0; player8.twoPointsAttempted = 0;
+  player8.twoPointsMade = 0; player8.twoPointPercentage = 0; player8.threePointsAttempted = 0; player8.threePointsMade = 0;
+  player8.threePointPercentage = 0;
+player9.points = 0; player9.defensiveRebounds = 0;player9.offensiveRebounds = 0; player9.rebounds = 0;
+  player9.assists = 0;player9.fieldGoalsAttempted = 0;player9.fieldGoalsMade = 0; player9.fieldGoalPercentage = 0; player9.twoPointsAttempted = 0;
+  player9.twoPointsMade = 0; player9.twoPointPercentage = 0; player9.threePointsAttempted = 0; player9.threePointsMade = 0;
+  player9.threePointPercentage = 0;
+player10.points = 0; player10.defensiveRebounds = 0;player10.offensiveRebounds = 0; player10.rebounds = 0;
+  player10.assists = 0;player10.fieldGoalsAttempted = 0;player10.fieldGoalsMade = 0; player10.fieldGoalPercentage = 0; player10.twoPointsAttempted = 0;
+  player10.twoPointsMade = 0; player10.twoPointPercentage = 0; player10.threePointsAttempted = 0; player10.threePointsMade = 0;
+  player10.threePointPercentage = 0;
+team1.score1 = 0;
+team2.score2 = 0;
+}
+
 
 function allStats()
 {
-	percentages(player1);
-	percentages(player2);
-	percentages(player3);
-	percentages(player4);
-	percentages(player5);
-	percentages(player6);
-	percentages(player7);
-	percentages(player8);
-	percentages(player9);
-	percentages(player10);
+  percentages(player1);
+  percentages(player2);
+  percentages(player3);
+  percentages(player4);
+  percentages(player5);
+  percentages(player6);
+  percentages(player7);
+  percentages(player8);
+  percentages(player9);
+  percentages(player10);
 
-	console.log("Team1")
-	 printStats(player1);
-	 printStats(player2);
-	 printStats(player3);
-	 printStats(player4);
-	 printStats(player5);
-	 console.log("Team2");
-	 printStats(player6);
-	 printStats(player7);
-	 printStats(player8);
-	 printStats(player9);
-	 printStats(player10);
+   console.log("Team1")
+   printStats(player1);
+   printStats(player2);
+   printStats(player3);
+   printStats(player4);
+   printStats(player5);
+   console.log("Team2");
+   printStats(player6);
+   printStats(player7);
+   printStats(player8);
+   printStats(player9);
+   printStats(player10);
 }
 
 function percentages(obj)
 {
-	obj.fieldGoalPercentage = Math.round(((obj.fieldGoalsMade / obj.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
-	obj.twoPointPercentage = Math.round(((obj.twoPointsMade / obj.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
-	obj.threePointPercentage = Math.round(((obj.threePointsMade / obj.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
-	//teamFieldGoalPercentage = Math.round(((player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade) / (player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted) + Number.EPSILON) * 100) / 100;
+  obj.fieldGoalPercentage = Math.round(((obj.fieldGoalsMade / obj.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  obj.twoPointPercentage = Math.round(((obj.twoPointsMade / obj.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  obj.threePointPercentage = Math.round(((obj.threePointsMade / obj.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  //teamFieldGoalPercentage = Math.round(((player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade) / (player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted) + Number.EPSILON) * 100) / 100;
 }
 
 function allPercentages()
 {
-	percentages(player1);
-	percentages(player2);
-	percentages(player3);
-	percentages(player4);
-	percentages(player5);
-	percentages(player6);
-	percentages(player7);
-	percentages(player8);
-	percentages(player9);
-	percentages(player10);
+  percentages(player1);
+  percentages(player2);
+  percentages(player3);
+  percentages(player4);
+  percentages(player5);
+  percentages(player6);
+  percentages(player7);
+  percentages(player8);
+  percentages(player9);
+  percentages(player10);
 }
 
 function printTeamStats()
 {
-	//team1
-	teamPoints = player1.points + player2.points + player3.points + player4.points + player5.points;   // could make these part of a copy object for encapsulation? 
-  	teamDefensiveRebounds = player1.defensiveRebounds + player2.defensiveRebounds + player3.defensiveRebounds + player4.defensiveRebounds + player5.defensiveRebounds;
-  	teamOffensiveRebounds = player1.offensiveRebounds + player2.offensiveRebounds + player3.offensiveRebounds + player4.offensiveRebounds + player5.offensiveRebounds;
-  	teamRebounds = player1.rebounds + player2.rebounds + player3.rebounds + player4.rebounds + player5.rebounds;
-  	teamFieldGoalsAttempted = player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted;
-    teamFieldGoalsMade = player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade;
-   	teamFieldGoalPercentage = Math.round(((player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade) / (player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
-  	teamTwoPointsAttempted = player1.twoPointsAttempted + player2.twoPointsAttempted + player3.twoPointsAttempted + player4.twoPointsAttempted + player5.twoPointsAttempted;
-  	teamTwoPointsMade = player1.twoPointsMade + player2.twoPointsMade + player3.twoPointsMade + player4.twoPointsMade + player5.twoPointsMade; 
-  	teamTwoPointPercentage = Math.round(((player1.twoPointsMade + player2.twoPointsMade + player3.twoPointsMade + player4.twoPointsMade + player5.twoPointsMade) / (player1.twoPointsAttempted + player2.twoPointsAttempted + player3.twoPointsAttempted + player4.twoPointsAttempted + player5.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
- 	teamThreePointsAttempted = player1.threePointsAttempted + player2.threePointsAttempted + player3.threePointsAttempted + player4.threePointsAttempted + player5.threePointsAttempted;
-  	teamThreePointsMade = player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade;
-  	teamThreePointPercentage = Math.round(((player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade) / (player1.threePointsAttempted + player2.threePointsAttempted + player3.threePointsAttempted + player4.threePointsAttempted + player5.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  //team1
+  teamPoints = player1.points + player2.points + player3.points + player4.points + player5.points;   // could make these part of a copy object for encapsulation? 
+  teamDefensiveRebounds = player1.defensiveRebounds + player2.defensiveRebounds + player3.defensiveRebounds + player4.defensiveRebounds + player5.defensiveRebounds;
+  teamOffensiveRebounds = player1.offensiveRebounds + player2.offensiveRebounds + player3.offensiveRebounds + player4.offensiveRebounds + player5.offensiveRebounds;
+  teamRebounds = player1.rebounds + player2.rebounds + player3.rebounds + player4.rebounds + player5.rebounds;
+  teamFieldGoalsAttempted = player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted;
+  teamFieldGoalsMade = player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade;
+  teamFieldGoalPercentage = Math.round(((player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade) / (player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  teamTwoPointsAttempted = player1.twoPointsAttempted + player2.twoPointsAttempted + player3.twoPointsAttempted + player4.twoPointsAttempted + player5.twoPointsAttempted;
+  teamTwoPointsMade = player1.twoPointsMade + player2.twoPointsMade + player3.twoPointsMade + player4.twoPointsMade + player5.twoPointsMade; 
+  teamTwoPointPercentage = Math.round(((player1.twoPointsMade + player2.twoPointsMade + player3.twoPointsMade + player4.twoPointsMade + player5.twoPointsMade) / (player1.twoPointsAttempted + player2.twoPointsAttempted + player3.twoPointsAttempted + player4.twoPointsAttempted + player5.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  teamThreePointsAttempted = player1.threePointsAttempted + player2.threePointsAttempted + player3.threePointsAttempted + player4.threePointsAttempted + player5.threePointsAttempted;
+  teamThreePointsMade = player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade;
+  teamThreePointPercentage = Math.round(((player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade) / (player1.threePointsAttempted + player2.threePointsAttempted + player3.threePointsAttempted + player4.threePointsAttempted + player5.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
   console.log("Team1:  Points:" + teamPoints + " Rebounds:" + teamRebounds + " ORB: " + teamOffensiveRebounds + 
-  	" DRB: " + teamDefensiveRebounds + " FGA: " + teamFieldGoalsAttempted 
- 	+ " FGM: " + teamFieldGoalsMade + " FG%: " + teamFieldGoalPercentage + " 2PA: " 
- 	+ teamTwoPointsAttempted + " 2PM: " + teamTwoPointsMade + " 2P%: " + teamTwoPointPercentage 
- 	+ " 3PA: " + teamThreePointsAttempted + " 3PM: " + teamThreePointsMade + " 3P%: " + teamThreePointPercentage)
+    " DRB: " + teamDefensiveRebounds + " FGA: " + teamFieldGoalsAttempted 
+  + " FGM: " + teamFieldGoalsMade + " FG%: " + teamFieldGoalPercentage + " 2PA: " 
+  + teamTwoPointsAttempted + " 2PM: " + teamTwoPointsMade + " 2P%: " + teamTwoPointPercentage 
+  + " 3PA: " + teamThreePointsAttempted + " 3PM: " + teamThreePointsMade + " 3P%: " + teamThreePointPercentage)
 
   teamPoints2 = player6.points + player7.points + player8.points + player9.points + player10.points;   // could make these part of a copy object for encapsulation? 
-  	teamDefensiveRebounds2 = player6.defensiveRebounds + player7.defensiveRebounds + player8.defensiveRebounds + player9.defensiveRebounds + player10.defensiveRebounds;
-  	teamOffensiveRebounds2 = player6.offensiveRebounds + player7.offensiveRebounds + player8.offensiveRebounds + player9.offensiveRebounds + player10.offensiveRebounds;
-  	teamRebounds2 = player6.rebounds + player7.rebounds + player8.rebounds + player9.rebounds + player10.rebounds;
-  	teamFieldGoalsAttempted2 = player6.fieldGoalsAttempted + player7.fieldGoalsAttempted + player8.fieldGoalsAttempted + player9.fieldGoalsAttempted + player10.fieldGoalsAttempted;
-    teamFieldGoalsMade2 = player6.fieldGoalsMade + player7.fieldGoalsMade + player8.fieldGoalsMade + player9.fieldGoalsMade + player10.fieldGoalsMade;
-   	teamFieldGoalPercentage2 = Math.round(((player6.fieldGoalsMade + player7.fieldGoalsMade + player8.fieldGoalsMade + player9.fieldGoalsMade + player10.fieldGoalsMade) / (player6.fieldGoalsAttempted + player7.fieldGoalsAttempted + player8.fieldGoalsAttempted + player9.fieldGoalsAttempted + player10.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
-  	teamTwoPointsAttempted2 = player6.twoPointsAttempted + player7.twoPointsAttempted + player8.twoPointsAttempted + player9.twoPointsAttempted + player10.twoPointsAttempted;
-  	teamTwoPointsMade2 = player6.twoPointsMade + player7.twoPointsMade + player8.twoPointsMade + player9.twoPointsMade + player10.twoPointsMade;
-  	teamTwoPointPercentage2 = Math.round(((player6.twoPointsMade + player7.twoPointsMade + player8.twoPointsMade + player9.twoPointsMade + player10.twoPointsMade) / (player6.twoPointsAttempted + player7.twoPointsAttempted + player8.twoPointsAttempted + player9.twoPointsAttempted + player10.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
- 	teamThreePointsAttempted2 = player6.threePointsAttempted + player7.threePointsAttempted + player8.threePointsAttempted + player9.threePointsAttempted + player10.threePointsAttempted;
-  	teamThreePointsMade2 = player6.threePointsMade + player7.threePointsMade + player8.threePointsMade + player9.threePointsMade + player10.threePointsMade;
-  	teamThreePointPercentage2 = Math.round(((player6.threePointsMade + player7.threePointsMade + player8.threePointsMade + player9.threePointsMade + player10.threePointsMade) / (player6.threePointsAttempted + player7.threePointsAttempted + player8.threePointsAttempted + player9.threePointsAttempted + player10.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  teamDefensiveRebounds2 = player6.defensiveRebounds + player7.defensiveRebounds + player8.defensiveRebounds + player9.defensiveRebounds + player10.defensiveRebounds;
+  teamOffensiveRebounds2 = player6.offensiveRebounds + player7.offensiveRebounds + player8.offensiveRebounds + player9.offensiveRebounds + player10.offensiveRebounds;
+  teamRebounds2 = player6.rebounds + player7.rebounds + player8.rebounds + player9.rebounds + player10.rebounds;
+  teamFieldGoalsAttempted2 = player6.fieldGoalsAttempted + player7.fieldGoalsAttempted + player8.fieldGoalsAttempted + player9.fieldGoalsAttempted + player10.fieldGoalsAttempted;
+  teamFieldGoalsMade2 = player6.fieldGoalsMade + player7.fieldGoalsMade + player8.fieldGoalsMade + player9.fieldGoalsMade + player10.fieldGoalsMade;
+  teamFieldGoalPercentage2 = Math.round(((player6.fieldGoalsMade + player7.fieldGoalsMade + player8.fieldGoalsMade + player9.fieldGoalsMade + player10.fieldGoalsMade) / (player6.fieldGoalsAttempted + player7.fieldGoalsAttempted + player8.fieldGoalsAttempted + player9.fieldGoalsAttempted + player10.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  teamTwoPointsAttempted2 = player6.twoPointsAttempted + player7.twoPointsAttempted + player8.twoPointsAttempted + player9.twoPointsAttempted + player10.twoPointsAttempted;
+  teamTwoPointsMade2 = player6.twoPointsMade + player7.twoPointsMade + player8.twoPointsMade + player9.twoPointsMade + player10.twoPointsMade;
+  teamTwoPointPercentage2 = Math.round(((player6.twoPointsMade + player7.twoPointsMade + player8.twoPointsMade + player9.twoPointsMade + player10.twoPointsMade) / (player6.twoPointsAttempted + player7.twoPointsAttempted + player8.twoPointsAttempted + player9.twoPointsAttempted + player10.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  teamThreePointsAttempted2 = player6.threePointsAttempted + player7.threePointsAttempted + player8.threePointsAttempted + player9.threePointsAttempted + player10.threePointsAttempted;
+  teamThreePointsMade2 = player6.threePointsMade + player7.threePointsMade + player8.threePointsMade + player9.threePointsMade + player10.threePointsMade;
+  teamThreePointPercentage2 = Math.round(((player6.threePointsMade + player7.threePointsMade + player8.threePointsMade + player9.threePointsMade + player10.threePointsMade) / (player6.threePointsAttempted + player7.threePointsAttempted + player8.threePointsAttempted + player9.threePointsAttempted + player10.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
   console.log("Team2:  Points:" + teamPoints2 + " Rebounds:" + teamRebounds2 + " ORB: " + teamOffensiveRebounds2 + 
-  	" DRB: " + teamDefensiveRebounds2 + " FGA: " + teamFieldGoalsAttempted2 
- 	+ " FGM: " + teamFieldGoalsMade2 + " FG%: " + teamFieldGoalPercentage2 + " 2PA: " 
- 	+ teamTwoPointsAttempted2 + " 2PM: " + teamTwoPointsMade2 + " 2P%: " + teamTwoPointPercentage2
- 	+ " 3PA: " + teamThreePointsAttempted2 + " 3PM: " + teamThreePointsMade2 + " 3P%: " + teamThreePointPercentage2
- 	)
+    " DRB: " + teamDefensiveRebounds2 + " FGA: " + teamFieldGoalsAttempted2 
+  + " FGM: " + teamFieldGoalsMade2 + " FG%: " + teamFieldGoalPercentage2 + " 2PA: " 
+  + teamTwoPointsAttempted2 + " 2PM: " + teamTwoPointsMade2 + " 2P%: " + teamTwoPointPercentage2
+  + " 3PA: " + teamThreePointsAttempted2 + " 3PM: " + teamThreePointsMade2 + " 3P%: " + teamThreePointPercentage2
+  )
 }
 
 // jumpBall will assign possession
 function jumpBall()
 {
-	rand = Math.random();
-	if (rand < 0.5)
-	{
-		possession = 1;
-		console.log("Team1 secure the tip");
-		advance();
-	}
-	else
-	{
-		possession = 2;
-		console.log("Team2 secure the tip");
-		advance();
-	}
+  rand = Math.random();
+  if (rand < 0.5)
+  {
+    possession = 1;
+ //   player1.ball = true; 
+    console.log("Team1 secure the tip");
+    advance(randomPlayer());
+  }
+  else
+  {
+    possession = 2;
+ //   player2.ball = true; 
+    console.log("Team2 secure the tip");
+    advance(randomPlayer());
+  }
 }
 
-function advance()
+//advance up court
+function advance(advancer)
 {
-	b = Math.random();
+  b = Math.random();
+  assister = 0;
+ // advancer.ball =  true;
+  if (team1.score1 >= target)
+  {
+    console.log("game over, team1 win it");
+    printTeamStats();
+  } else if (team2.score2 >= target)  
+  { 
+    console.log("game over, team2 win it");
+    printTeamStats();
+  } 
+  else 
+  {
+  if (possession == 1)
+  {
+    if (b < 0.95)
+    {
+    console.log("Team1 advance the ball ");
+    chooseOffence(advancer);
+    } else
+    {
+  //  advancer.ball = false;
+    possessionChange();
+    console.log("Team1 turn it over!"); 
+    advance(randomPlayer());  
+    }
+  } else 
+    {
+    if (b < 0.95)
+    {
+    console.log("Team2 advance the ball ");
+    chooseOffence(advancer);
+    } else
+    {
+  //  advancer.ball = false;
+    possessionChange();
+    console.log("Team2 turn it over!");   
+    advance(randomPlayer());
+    }
+    }
+  }
+}
+//pass the ball to a currentlly random player
+function pass(passer)
+{
+  p = passCalc(passer.passing)
+  rand = Math.random();
+  receiver = randomPlayer();
+  //to stop duplicates
+  if (receiver == passer)   // object comparison needed
+  {
+  receiver = randomPlayer();
+  pass(passer);
+  } else 
+  {
+    if (rand < p)
+    {
+    //  passer.ball = false;
+    //  receiver.ball = true;
+    assister = passer;
+    console.log("" + passer.name + " passes to " + receiver.name);
+    chooseOffence(receiver);
+      // run receiver function
+    } else 
+    {
+   //   passer.ball = false;
+      possessionChange();
+      advance(randomPlayer());
+      //turnover stat / steal stat
+      // new player ball true
+    }
+  } 
+} 
 
-	if (team1.score1 >= target)
-	{
-		console.log("game over, team1 win it");
-		console.table(team1);
-		console.table(team2);
-	} else if (team2.score2 >= target) 	
-	{	
-		console.log("game over, team2 win it");
-		console.table(team1);
-		console.table(team2);
-	} 
-	else 
-	{
-	if (possession == 1)
-	{
-		if (b < 0.95)
-		{
-		console.log("Team1 advance the ball ");
-		chooseOffence();
-		} else
-		{
-		possessionChange();
-		console.log("Team1 turn it over!");	
-		advance();	
-		}
-	} else 
-		{
-		if (b < 0.95)
-		{
-		console.log("Team2 advance the ball ");
-		chooseOffence();
-		} else
-		{
-		possessionChange();
-		console.log("Team2 turn it over!");		
-		advance();
-		}
-		}
-	}
+function passCalc(attr)
+{
+  if (attr == 1)
+  {
+  return 86;
+  } else if (attr == 2)
+  {
+  return 87; 
+  } else if (attr == 3)
+  {
+  return 88; 
+  } else if (attr == 4)
+  {
+  return 89; 
+  } else if (attr == 5)
+  {
+  return 90; 
+  } else if (attr == 6)
+  {
+  return 91; 
+  } else if (attr == 7)
+  {
+   return 92; 
+  } else if (attr == 8)
+  {
+  return 93;
+  } else if (attr == 9)
+  {
+  return 94;
+  } else if (attr == 10)
+  {
+  return 95;
+  }
 }
 
-function chooseOffence()
+function chooseOffence(advancer)
 {
-	rand = Math.random();
-	// array = [team1.player1, team1.player2, team1.player3, team1.player4, team1.player5]
-	if (rand < 0.34)
-	{
-	twoShot(randomPlayer());
-	} else if (rand >= 0.34 && rand <= 0.67)
-	{
-	threePoint(randomPlayer());
-	} else
-	{
-	layUp(randomPlayer());
-	}
+  rand = Math.random();
+  p = (advancer.passTendency / 100) * 9 ;
+  a = 1 - p;
+  a1 = (a / 3);
+
+  if (rand < p)  // pass
+  {
+  pass(advancer);
+  } else if (rand >= p && rand <= (p + a1)) 
+  {
+  twoShot(advancer);
+  } else if (rand > (p + a1) && rand <= (p + a1 + a1))
+  {
+  threePoint(advancer);
+  } else  
+  {
+  layUp(advancer); 
+  }
 }
 
 function getRandomInt(min, max) {
@@ -229,307 +360,290 @@ function getRandomInt(min, max) {
 
 function randomPlayer()
 {
-	rand = getRandomInt(1, 6);
-	if (possession == 1)
-	{
-		if(rand == 1)
-		{	
-		console.log(team1.player1.name);
-		return team1.player1;
-		} else if (rand == 2)
-		{
-		console.log(team1.player2.name);
-		return team1.player2;	
-		} else if (rand == 3)
-		{
-		console.log(team1.player3.name);	
-		return team1.player3;
-		} else if (rand == 4)
-		{
-		console.log(team1.player4.name);
-		return team1.player4;		
-		} else if (rand == 5)
-		{
-		console.log(team1.player5.name);	
-		return team1.player5;
-		}
-	} else 
-		if(rand == 1)
-		{
-		console.log(team2.player6.name);
-		return team2.player6;
-		} else if (rand == 2)
-		{
-		console.log(team2.player7.name);	
-		return team2.player7;
-		} else if (rand == 3)
-		{
-		console.log(team2.player8.name);
-		return team2.player8;	
-		} else if (rand == 4)
-		{
-		console.log(team2.player9.name);	
-		return team2.player9;	
-		} else if (rand == 5)
-		{
-		console.log(team2.player10.name);	
-		return team2.player10;
-		}
+  rand = getRandomInt(1, 6);
+  if (possession == 1)
+  {
+    if(rand == 1)
+    { 
+    return team1.player1;
+    } else if (rand == 2)
+    {
+    return team1.player2; 
+    } else if (rand == 3)
+    { 
+    return team1.player3;
+    } else if (rand == 4)
+    {
+    return team1.player4;   
+    } else if (rand == 5)
+    { 
+    return team1.player5;
+    }
+  } else 
+    if(rand == 1)
+    {
+    return team2.player6;
+    } else if (rand == 2)
+    { 
+    return team2.player7;
+    } else if (rand == 3)
+    {
+    return team2.player8; 
+    } else if (rand == 4)
+    { 
+    return team2.player9; 
+    } else if (rand == 5)
+    {
+    return team2.player10;
+    }
 }
-
 
 function possessionChange()
 {
-	if (possession == 1)
-	{
-		possession = 2;
-		console.log("team2 with the ball");
-	} else
-	{
-		possession = 1;
-		console.log("team1 with the ball");
-	}
+  assister = 0;
+  if (possession == 1)
+  {
+    possession = 2;
+    console.log("team2 with the ball");
+  } else
+  {
+    possession = 1;
+    console.log("team1 with the ball");
+  }
 }
 
 function rebound()
 {
-	let rand = Math.random();
-	
-	if (possession == 1)
-	{
-		if (rand < 0.8) 
-		{
-		possessionChange();
-		rebounder = randomPlayer();
-		console.log("" + rebounder.name + " get's the defensive rebound for Team2");	
-		rebounder.rebounds += 1;
-		rebounder.defensiveRebounds += 1;
-		advance();
-		} else
-		{
-		rebounder = randomPlayer();
-		console.log("" + rebounder.name + " with the offensive rebound for Team1!");
-		rebounder.rebounds += 1;
-		rebounder.offensiveRebounds += 1;
-		layUp(rebounder);
-		}
-	} else 
-		{
-		if (rand < 0.8) 
-		{
-		possessionChange();
-		rebounder = randomPlayer();
-		console.log("" + rebounder.name + " get's the defensive rebound for Team1");
-		rebounder.rebounds += 1;
-		rebounder.defensiveRebounds += 1;
-		advance();
-		} else
-		{
-		rebounder = randomPlayer();
-		console.log("" + rebounder.name + " with the offensive rebound for Team2!");
-		rebounder.rebounds += 1;
-		rebounder.offensiveRebounds += 1;
-		layUp(rebounder);
-		}
-		}
+  let rand = Math.random();
+  
+  if (possession == 1)
+  {
+    if (rand < 0.8) 
+    {
+    possessionChange();
+    rebounder = randomPlayer();
+    console.log("" + rebounder.name + " get's the defensive rebound for Team2");  
+    rebounder.rebounds += 1;
+    rebounder.defensiveRebounds += 1;
+    advance(rebounder);
+    } else
+    {
+    rebounder = randomPlayer();
+    console.log("" + rebounder.name + " with the offensive rebound for Team1!");
+    rebounder.rebounds += 1;
+    rebounder.offensiveRebounds += 1;
+    layUp(rebounder);
+    }
+  } else 
+    {
+    if (rand < 0.8) 
+    {
+    possessionChange();
+    rebounder = randomPlayer();
+    console.log("" + rebounder.name + " get's the defensive rebound for Team1");
+    rebounder.rebounds += 1;
+    rebounder.defensiveRebounds += 1;
+    advance(rebounder);
+    } else
+    {
+    rebounder = randomPlayer();
+    console.log("" + rebounder.name + " with the offensive rebound for Team2!");
+    rebounder.rebounds += 1;
+    rebounder.offensiveRebounds += 1;
+    layUp(rebounder);
+    }
+    }
 }
 
 //SHOOTING FUNCTIONS
 function twoShot(player) {
-	rand = Math.random();
-	shooter = player;
-	s = (player.shooting / 10 / 1.3);
-	console.log(s)
+  rand = Math.random();
+  shooter = player;
+  s = (player.twoPointers / 10 / 1.3);
 
-	if (team1.score1 >= target)
-	{
-		console.log("game over, team1 win it");
-		console.table(team1);
-		console.table(team2);
-	} else if (team2.score2 >= target) 	
-	{	
-		console.log("game over, team2 win it");
-		console.table(team1);
-		console.table(team2);
-	} 
-	else 
-	{
-	if (possession == 1)
-	{
-		if (rand < s)
-		{
-			team1.score1 += 2;
-			shooter.points += 2;
-			shooter.twoPointsMade += 1;
-			shooter.twoPointsAttempted += 1;
-			shooter.fieldGoalsMade += 1;
-			shooter.fieldGoalsAttempted += 1;
-			console.log("The 2 is good by " + shooter.name + " for Team1. They now have " + team1.score1 + " points");
-			possessionChange();
-			advance();
-		} else
-			{
-				shooter.twoPointsAttempted += 1;
-				shooter.fieldGoalsAttempted += 1;
-				console.log("The 2 is no good by " + shooter.name + " for team1");
-				rebound();
-			}
-	} else 
-		{
-			if (rand < s)
-		{
-			team2.score2 += 2;
-			shooter.points += 2;
-			shooter.twoPointsMade += 1;
-			shooter.twoPointsAttempted += 1;
-			shooter.fieldGoalsMade += 1;
-			shooter.fieldGoalsAttempted += 1;
-			console.log("The 2 is good by " + shooter.name + " for Team2. They now have " + team2.score2 + " points");
-			possessionChange();
-			advance();
-		} else
-			{
-				shooter.twoPointsAttempted += 1;
-				shooter.fieldGoalsAttempted += 1;
-				console.log("The 2 is no good by " + shooter.name + " for Team2");
-				rebound();
-			}
-		}
-	}
+  if (possession == 1)
+  {
+    if (rand < s)
+    {
+      team1.score1 += 2;
+      shooter.points += 2;
+      shooter.twoPointsMade += 1;
+      shooter.twoPointsAttempted += 1;
+      shooter.fieldGoalsMade += 1;
+      shooter.fieldGoalsAttempted += 1;
+      assister.assists += 1;
+      
+      if (typeof(assister) == "object") 
+      {
+      console.log("The 2 is good by " + shooter.name + " for Team1. Assisted by " + assister.name + ". They now have " + team1.score1 + " points");
+      } else 
+      {
+      console.log("The 2 is good by " + shooter.name + " for Team1. They now have " + team1.score1 + " points");
+      }
+      possessionChange();
+      advance(randomPlayer());
+    } else
+      {
+        shooter.twoPointsAttempted += 1;
+        shooter.fieldGoalsAttempted += 1;
+        console.log("The 2 is no good by " + shooter.name + " for team1");
+        rebound();
+      }
+  } else 
+    {
+      if (rand < s)
+    {
+      team2.score2 += 2;
+      shooter.points += 2;
+      shooter.twoPointsMade += 1;
+      shooter.twoPointsAttempted += 1;
+      shooter.fieldGoalsMade += 1;
+      shooter.fieldGoalsAttempted += 1;
+      assister.assists += 1;
+      if (typeof(assister) == "object") 
+      {
+      console.log("The 2 is good by " + shooter.name + " for Team2. Assisted by " + assister.name + ". They now have " + team2.score2 + " points");
+      } else
+      {
+      console.log("The 2 is good by " + shooter.name + " for Team2. They now have " + team2.score2 + " points");  
+      }
+      possessionChange();
+      advance(randomPlayer());
+    } else
+      {
+        shooter.twoPointsAttempted += 1;
+        shooter.fieldGoalsAttempted += 1;
+        console.log("The 2 is no good by " + shooter.name + " for Team2");
+        rebound();
+      }
+    }
+  
 }
 
 function threePoint(player) {
-	shooter = player;
-	s = (player.shooting / 10 / 1.3);
-	rand = Math.random();
+  shooter = player;
+  s = (player.threePointers / 10 / 1.3);
+  rand = Math.random();
 
-	if (team1.score1 >= target)
-	{
-		console.log("game over, team1 win it");
-		console.table(team1);
-		console.table(team2);
-	} else if (team2.score2 >= target) 	
-	{	
-		console.log("game over, team2 win it");
-		console.table(team1);
-		console.table(team2);
-	} 
-	else 
-	{
-	if (possession == 1)
-	{
-		if (rand < s)
-		{
-			team1.score1 += 3;
-			shooter.points += 3;
-			shooter.threePointsMade += 1;
-			shooter.threePointsAttempted += 1;
-			shooter.fieldGoalsMade += 1;
-			shooter.fieldGoalsAttempted += 1;
-			console.log("The 3 is good by " + shooter.name + ". Team1 now have " + team1.score1 + " points");
-			possessionChange();
-			advance();
-		} else
-			{
-				shooter.threePointsAttempted +=1;
-				shooter.fieldGoalsAttempted += 1;
-				console.log("The 3 is no good by "  + shooter.name + " for Team1");
-				rebound();
-			}
-	} else 
-		{
-			if (rand < s)
-		{
-			team2.score2 += 3;
-			shooter.points += 3;
-			shooter.threePointsMade += 1;
-			shooter.threePointsAttempted +=  1;
-			shooter.fieldGoalsMade += 1;
-			shooter.fieldGoalsAttempted += 1;
-			console.log("The 3 is good by " + shooter.name + ". Team2 now have " + team2.score2 + " points");
-			possessionChange();
-			advance();
-		} else
-			{
-				shooter.fieldGoalsAttempted += 1;
-				shooter.threePointsAttempted += 1;
-				console.log("The 3 is no good by "  + shooter.name + " for Team2");
-				rebound();
-			}
-		}
-	}
+  if (possession == 1)
+  {
+    if (rand < s)
+    {
+      team1.score1 += 3;
+      shooter.points += 3;
+      shooter.threePointsMade += 1;
+      shooter.threePointsAttempted += 1;
+      shooter.fieldGoalsMade += 1;
+      shooter.fieldGoalsAttempted += 1;
+      assister.assists += 1;
+      if (typeof(assister) == "object") 
+      {
+      console.log("The 3 is good by " + shooter.name + " for Team1. Assisted by " + assister.name + ". They now have " + team1.score1 + " points");
+      } else
+      {
+      console.log("The 3 is good by " + shooter.name + ". Team1 now have " + team1.score1 + " points");  
+      }
+      possessionChange();
+      advance(randomPlayer());
+    } else
+      {
+        shooter.threePointsAttempted +=1;
+        shooter.fieldGoalsAttempted += 1;
+        console.log("The 3 is no good by "  + shooter.name + " for Team1");
+        rebound();
+      }
+  } else 
+    {
+      if (rand < s)
+    {
+      team2.score2 += 3;
+      shooter.points += 3;
+      shooter.threePointsMade += 1;
+      shooter.threePointsAttempted +=  1;
+      shooter.fieldGoalsMade += 1;
+      shooter.fieldGoalsAttempted += 1;
+      assister.assists += 1;
+      if (typeof(assister) == "object") 
+      {
+      console.log("The 3 is good by " + shooter.name + " for Team2. Assisted by " + assister.name + ". They now have " + team2.score2 + " points");
+      } else
+      {
+      console.log("The 3 is good by " + shooter.name + ". Team2 now have " + team2.score2 + " points");  
+      }
+      possessionChange();
+      advance(randomPlayer());
+    } else
+      {
+        shooter.fieldGoalsAttempted += 1;
+        shooter.threePointsAttempted += 1;
+        console.log("The 3 is no good by "  + shooter.name + " for Team2");
+        rebound();
+      }
+    }
+  
 }
 
-function layUp(player) {
-	rand = Math.random();
-	// layUp stat needed
-	shooter = player;
+function layUp(player) 
+{
+  rand = Math.random();
+  // layUp stat needed
+  shooter = player;
 
+ 
 
-	if (team1.score1 >= target)
-	{
-		console.log("game over, team1 win it");
-		console.table(team1);
-		console.table(team2);
-	} else if (team2.score2 >= target) 	
-	{	
-		console.log("game over, team2 win it");
-		console.table(team1);
-		console.table(team2);
-	} 
-	else 
-	{
-
-	if (possession == 1)
-	{
-		if (rand < 0.75)
-		{
-			team1.score1 += 2;
-			shooter.points += 2;
-			shooter.twoPointsMade += 1;
-			shooter.twoPointsAttempted += 1;
-			shooter.fieldGoalsMade += 1;
-			shooter.fieldGoalsAttempted += 1;
-			console.log("The lay-up is good by " + shooter.name + " for Team1. They now have " + team1.score1 + " points");
-			possessionChange();
-			advance();
-		} else
-			{
-				shooter.twoPointsAttempted += 1;
-				shooter.fieldGoalsAttempted += 1;
-				console.log("The lay-up is no good by " + shooter.name + " for team1");
-				rebound();
-			}
-	} else 
-		{
-			if (rand < 0.75)
-		{
-			team2.score2 += 2;
-			shooter.points += 2;
-			shooter.twoPointsMade += 1;
-			shooter.twoPointsAttempted += 1;
-			shooter.fieldGoalsMade += 1;
-			shooter.fieldGoalsAttempted += 1;
-			console.log("The lay-up is good by " + shooter.name + " for Team2. They now have " + team2.score2 + " points");
-			possessionChange();
-			advance();
-		} else
-			{
-				shooter.twoPointsAttempted += 1;
-				shooter.fieldGoalsAttempted += 1;
-				console.log("The lay-up is no good by " + shooter.name + " for Team2");
-				rebound();
-			}
-		}
-	}
+  if (possession == 1)
+  {
+    if (rand < 0.75)
+    {
+      team1.score1 += 2;
+      shooter.points += 2;
+      shooter.twoPointsMade += 1;
+      shooter.twoPointsAttempted += 1;
+      shooter.fieldGoalsMade += 1;
+      shooter.fieldGoalsAttempted += 1;
+      assister.assists += 1;
+      if (typeof(assister) == "object") 
+      {
+      console.log("The lay-up is good by " + shooter.name + " for Team1. Assisted by " + assister.name + ". They now have " + team1.score1 + " points");
+      } else
+      {
+      console.log("The lay-up is good by " + shooter.name + ". Team1 now have " + team1.score1 + " points");  
+      }
+      possessionChange();
+      advance(randomPlayer());
+    } else
+      {
+        shooter.twoPointsAttempted += 1;
+        shooter.fieldGoalsAttempted += 1;
+        console.log("The lay-up is no good by " + shooter.name + " for team1");
+        rebound();
+      }
+    } else 
+    {
+      if (rand < 0.75)
+    {
+      team2.score2 += 2;
+      shooter.points += 2;
+      shooter.twoPointsMade += 1;
+      shooter.twoPointsAttempted += 1;
+      shooter.fieldGoalsMade += 1;
+      shooter.fieldGoalsAttempted += 1;
+      assister.assists += 1;
+      if (typeof(assister) == "object") 
+      {
+      console.log("The lay-up is good by " + shooter.name + " for Team2. Assisted by " + assister.name + ". They now have " + team2.score2 + " points");
+      } else
+      {
+      console.log("The lay-up is good by " + shooter.name + ". Team2 now have " + team2.score2 + " points");  
+      }
+      possessionChange();
+      advance(randomPlayer());
+    } else
+      {
+        shooter.twoPointsAttempted += 1;
+        shooter.fieldGoalsAttempted += 1;
+        console.log("The lay-up is no good by " + shooter.name + " for Team2");
+        rebound();
+      }
+    }
 }
-
-
-/*
-
-
-
-
-*/
-
-
