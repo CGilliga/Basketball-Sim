@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Basketball Simulator</title>
-    <link href="minimal-table.css" rel="stylesheet" type="text/css">
-   
+    
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+   <link href="minimal-table.css" rel="stylesheet" type="text/css">
   </head>
   <body>
 
@@ -55,16 +56,55 @@
   document.getElementById("playerTenAssists").innerHTML = player10.assists;
 }
 
+  function displayTeamStats()
+{ 
+  a = statsObject();
+  document.getElementById("teamOnePoints").innerHTML = a.points;
+  document.getElementById("teamOneRebounds").innerHTML = a.rebounds;
+  document.getElementById("teamOneOffensiveRebounds").innerHTML = a.offensiveRebounds;
+  document.getElementById("teamOneDefensiveRebounds").innerHTML = a.defensiveRebounds;
+  document.getElementById("teamOneFieldGoalsMade").innerHTML = a.fieldGoalsMade;
+  document.getElementById("teamOneFieldGoalsAttempted").innerHTML = a.fieldGoalsAttempted;
+  document.getElementById("teamOneFieldGoalPercentage").innerHTML = a.fieldGoalPercentage;
+  document.getElementById("teamOneTwoPointsMade").innerHTML = a.twoPointsMade;
+  document.getElementById("teamOneTwoPointsAttempted").innerHTML = a.twoPointsAttempted;
+  document.getElementById("teamOneTwoPointPercentage").innerHTML = a.twoPointPercentage;
+  document.getElementById("teamOneThreePointsMade").innerHTML = a.threePointsMade;
+  document.getElementById("teamOneThreePointsAttempted").innerHTML = a.threePointsMade;
+  document.getElementById("teamOneThreePointsAttempted").innerHTML = a.threePointPercentage;
+
+  document.getElementById("teamTwoPoints").innerHTML = a.points2;
+  document.getElementById("teamTwoRebounds").innerHTML = a.rebounds2;
+  document.getElementById("teamTwoOffensiveRebounds").innerHTML = a.offensiveRebounds2;
+  document.getElementById("teamTwoDefensiveRebounds").innerHTML = a.defensiveRebounds2;
+  document.getElementById("teamTwoFieldGoalsMade").innerHTML = a.fieldGoalsMade2;
+  document.getElementById("teamTwoFieldGoalsAttempted").innerHTML = a.fieldGoalsAttempted2;
+  document.getElementById("teamTwoFieldGoalPercentage").innerHTML = a.fieldGoalPercentage2;
+  document.getElementById("teamTwoTwoPointsMade").innerHTML = a.twoPointsMade2;
+  document.getElementById("teamTwoTwoPointsAttempted").innerHTML = a.twoPointsAttempted2;
+  document.getElementById("teamTwoTwoPointPercentage").innerHTML = a.twoPointPercentage2;
+  document.getElementById("teamTwoThreePointsMade").innerHTML = a.threePointsMade2;
+  document.getElementById("teamTwoThreePointsAttempted").innerHTML = a.threePointsMade2;
+  document.getElementById("teamTwoThreePointsAttempted").innerHTML = a.threePointPercentage2;
+}
+
 function displayScore()
 {
     document.getElementById("teamOneScore").innerHTML = team1.score1;
     document.getElementById("teamTwoScore").innerHTML = team2.score2;
 }
 
+function statsObject()
+{
+  var stats = new teamStats();
+  return stats
+}
+
   function startButton() 
 {
   jumpBall();
   displayScore();
+  displayTeamStats();
   displayStats();
   winner();
 //document.getElementById("myText").innerHTML = player1.name;
@@ -93,19 +133,17 @@ function winner()
 }
 
 </script>
-
+  <div class="content">
     <h1>Basketball Simulator</h1>
-
     <h2> Team 1: <span id="teamOneScore"> </span> </h2>  
     <h2> Team 2: <span id="teamTwoScore"> </span></h2>  
+    <h3> <span id="winner"></span> </h3>   
 
-   <h3> <span id="winner"></span> </h3>   
-
-<div >
-   <button onclick="startButton()"> Start Game </button>
-   <button onclick="resetButton()"> Reset </button>
-</div>
+   <button class="button is-dark" onclick="startButton()"> Start Game </button>
+   <button class="button is-dark" onclick="resetButton()"> Reset </button>
+  </div>
      
+     <h2>Player Stats</h2> 
     <table id="boxScore">
       <tr>
         <td> <b> Team 1 </b> </td>
@@ -180,7 +218,75 @@ function winner()
         <td><span id ="playerTenRebounds"> </span></td>
         <td><span id ="playerTenAssists"> </span></td>
       </tr>
+    </table>
 
+    <br>
+    <h2>Team Stats</h2>
+      <table id="teamBoxScore">
+      <tr>
+        <td> <b> Team 1 </b> </td>
+        <td> <b> PTS </b> </td>
+        <td> <b> RBS </b> </td>
+        <td> <b> ORB </b> </td>
+        <td> <b> DRB </b> </td>
+        <td> <b> FGM </b> </td>
+        <td> <b> FGA </b> </td>
+        <td> <b> FG% </b> </td>
+        <td> <b> 2PM </b> </td>
+        <td> <b> 2PA </b> </td>
+        <td> <b> 2P% </b> </td>
+        <td> <b> 3PM </b> </td>
+        <td> <b> 3PA </b> </td>
+        <td> <b> 3P% </b> </td>
+      </tr>
+      <tr>
+        <td><span id ="teamOne"> </span></td>
+        <td><span id ="teamOnePoints"> </span></td>
+        <td><span id ="teamOneRebounds"> </span></td>
+        <td><span id ="teamOneOffensiveRebounds"> </span></td>
+        <td><span id ="teamOneDefensiveRebounds"> </span></td>
+        <td><span id ="teamOneFieldGoalsMade"> </span></td>
+        <td><span id ="teamOneFieldGoalsAttempted"> </span></td>
+        <td><span id ="teamOneFieldGoalPercentage"> </span></td>
+        <td><span id ="teamOneTwoPointsMade"> </span></td>
+        <td><span id ="teamOneTwoPointsAttempted"> </span></td>
+        <td><span id ="teamOneTwoPointPercentage"> </span></td>
+        <td><span id ="teamOneThreePointsMade"> </span></td>
+        <td><span id ="teamOneThreePointsAttempted"> </span></td>
+        <td><span id ="teamOneThreePointPercentage"> </span></td>
+      </tr>
+      <tr>
+        <td> <b> Team 2 </b> </td>
+        <td> <b> PTS </b> </td>
+        <td> <b> RBS </b> </td>
+        <td> <b> ORB </b> </td>
+        <td> <b> DRB </b> </td>
+        <td> <b> FGM </b> </td>
+        <td> <b> FGA </b> </td>
+        <td> <b> FG% </b> </td>
+        <td> <b> 2PM </b> </td>
+        <td> <b> 2PA </b> </td>
+        <td> <b> 2P% </b> </td>
+        <td> <b> 3PM </b> </td>
+        <td> <b> 3PA </b> </td>
+        <td> <b> 3P% </b> </td>
+      </tr>
+       <tr>
+        <td><span id ="teamTwo"> </span></td>
+        <td><span id ="teamTwoPoints"> </span></td>
+        <td><span id ="teamTwoRebounds"> </span></td>
+        <td><span id ="teamTwoOffensiveRebounds"> </span></td>
+        <td><span id ="teamTwoDefensiveRebounds"> </span></td>
+        <td><span id ="teamTwoFieldGoalsMade"> </span></td>
+        <td><span id ="teamTwoFieldGoalsAttempted"> </span></td>
+        <td><span id ="teamTwoFieldGoalPercentage"> </span></td>
+        <td><span id ="teamTwoTwoPointsMade"> </span></td>
+        <td><span id ="teamTwoTwoPointsAttempted"> </span></td>
+        <td><span id ="teamTwoTwoPointPercentage"> </span></td>
+        <td><span id ="teamTwoThreePointsMade"> </span></td>
+        <td><span id ="teamTwoThreePointsAttempted"> </span></td>
+        <td><span id ="teamTwoThreePointPercentage"> </span></td>
+      </tr>
     </table>
   </body>
 <script type="text/javascript" src="bball.js"></script>

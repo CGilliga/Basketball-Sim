@@ -26,6 +26,37 @@ function Player(name, passing, twoP, threeP, tend) {
   this.threePointPercentage = 0;
 }
 
+function teamStats() {
+  this.points = player1.points + player2.points + player3.points + player4.points + player5.points;   // could make these part of a copy object for encapsulation? 
+  this.defensiveRebounds = player1.defensiveRebounds + player2.defensiveRebounds + player3.defensiveRebounds + player4.defensiveRebounds + player5.defensiveRebounds;
+  this.offensiveRebounds = player1.offensiveRebounds + player2.offensiveRebounds + player3.offensiveRebounds + player4.offensiveRebounds + player5.offensiveRebounds;
+  this.rebounds = player1.rebounds + player2.rebounds + player3.rebounds + player4.rebounds + player5.rebounds;
+  this.fieldGoalsAttempted = player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted;
+  this.fieldGoalsMade = player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade;
+  this.fieldGoalPercentage = Math.round(((player1.fieldGoalsMade + player2.fieldGoalsMade + player3.fieldGoalsMade + player4.fieldGoalsMade + player5.fieldGoalsMade) / (player1.fieldGoalsAttempted + player2.fieldGoalsAttempted + player3.fieldGoalsAttempted + player4.fieldGoalsAttempted + player5.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  this.twoPointsAttempted = player1.twoPointsAttempted + player2.twoPointsAttempted + player3.twoPointsAttempted + player4.twoPointsAttempted + player5.twoPointsAttempted;
+  this.twoPointsMade = player1.twoPointsMade + player2.twoPointsMade + player3.twoPointsMade + player4.twoPointsMade + player5.twoPointsMade; 
+  this.twoPointPercentage = Math.round(((player1.twoPointsMade + player2.twoPointsMade + player3.twoPointsMade + player4.twoPointsMade + player5.twoPointsMade) / (player1.twoPointsAttempted + player2.twoPointsAttempted + player3.twoPointsAttempted + player4.twoPointsAttempted + player5.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  this.threePointsAttempted = player1.threePointsAttempted + player2.threePointsAttempted + player3.threePointsAttempted + player4.threePointsAttempted + player5.threePointsAttempted;
+  this.threePointsMade = player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade;
+  this.threePointPercentage = Math.round(((player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade) / (player1.threePointsAttempted + player2.threePointsAttempted + player3.threePointsAttempted + player4.threePointsAttempted + player5.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+ 
+  this.points2 = player6.points + player7.points + player8.points + player9.points + player10.points;   // could make these part of a copy object for encapsulation? 
+  this.defensiveRebounds2 = player6.defensiveRebounds + player7.defensiveRebounds + player8.defensiveRebounds + player9.defensiveRebounds + player10.defensiveRebounds;
+  this.offensiveRebounds2 = player6.offensiveRebounds + player7.offensiveRebounds + player8.offensiveRebounds + player9.offensiveRebounds + player10.offensiveRebounds;
+  this.rebounds2 = player6.rebounds + player7.rebounds + player8.rebounds + player9.rebounds + player10.rebounds;
+  this.fieldGoalsAttempted2 = player6.fieldGoalsAttempted + player7.fieldGoalsAttempted + player8.fieldGoalsAttempted + player9.fieldGoalsAttempted + player10.fieldGoalsAttempted;
+  this.fieldGoalsMade2 = player6.fieldGoalsMade + player7.fieldGoalsMade + player8.fieldGoalsMade + player9.fieldGoalsMade + player10.fieldGoalsMade;
+  this.fieldGoalPercentage2 = Math.round(((player6.fieldGoalsMade + player7.fieldGoalsMade + player8.fieldGoalsMade + player9.fieldGoalsMade + player10.fieldGoalsMade) / (player6.fieldGoalsAttempted + player7.fieldGoalsAttempted + player8.fieldGoalsAttempted + player9.fieldGoalsAttempted + player10.fieldGoalsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  this.twoPointsAttempted2 = player6.twoPointsAttempted + player7.twoPointsAttempted + player8.twoPointsAttempted + player9.twoPointsAttempted + player10.twoPointsAttempted;
+  this.twoPointsMade2 = player6.twoPointsMade + player7.twoPointsMade + player8.twoPointsMade + player9.twoPointsMade + player10.twoPointsMade;
+  this.twoPointPercentage2 = Math.round(((player6.twoPointsMade + player7.twoPointsMade + player8.twoPointsMade + player9.twoPointsMade + player10.twoPointsMade) / (player6.twoPointsAttempted + player7.twoPointsAttempted + player8.twoPointsAttempted + player9.twoPointsAttempted + player10.twoPointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+  this.threePointsAttempted2 = player6.threePointsAttempted + player7.threePointsAttempted + player8.threePointsAttempted + player9.threePointsAttempted + player10.threePointsAttempted;
+  this.threePointsMade2 = player6.threePointsMade + player7.threePointsMade + player8.threePointsMade + player9.threePointsMade + player10.threePointsMade;
+  this.threePointPercentage2 = Math.round(((player6.threePointsMade + player7.threePointsMade + player8.threePointsMade + player9.threePointsMade + player10.threePointsMade) / (player6.threePointsAttempted + player7.threePointsAttempted + player8.threePointsAttempted + player9.threePointsAttempted + player10.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
+}
+
+
 var player1 = new Player('Baron Davis', 8, 5, 6, 9);
 var player2 = new Player('Kevin Martin', 10, 6, 8, 5);
 var player3 = new Player('J.R Smith', 7, 7, 7, 4);
