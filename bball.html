@@ -11,8 +11,7 @@
 
 <script type="text/javascript"> 
 
-  function displayStats()
-{
+  function displayStats() {
   document.getElementById("playerOne").innerHTML = player1.name;
   document.getElementById("playerOnePoints").innerHTML = player1.points;
   document.getElementById("playerOneRebounds").innerHTML = player1.rebounds;
@@ -56,8 +55,7 @@
   document.getElementById("playerTenAssists").innerHTML = player10.assists;
 }
 
-  function displayTeamStats()
-{ 
+  function displayTeamStats() { 
   a = statsObject();
   document.getElementById("teamOnePoints").innerHTML = a.points;
   document.getElementById("teamOneRebounds").innerHTML = a.rebounds;
@@ -71,7 +69,7 @@
   document.getElementById("teamOneTwoPointPercentage").innerHTML = a.twoPointPercentage;
   document.getElementById("teamOneThreePointsMade").innerHTML = a.threePointsMade;
   document.getElementById("teamOneThreePointsAttempted").innerHTML = a.threePointsMade;
-  document.getElementById("teamOneThreePointsAttempted").innerHTML = a.threePointPercentage;
+  document.getElementById("teamOneThreePointPercentage").innerHTML = a.threePointPercentage;
 
   document.getElementById("teamTwoPoints").innerHTML = a.points2;
   document.getElementById("teamTwoRebounds").innerHTML = a.rebounds2;
@@ -85,68 +83,91 @@
   document.getElementById("teamTwoTwoPointPercentage").innerHTML = a.twoPointPercentage2;
   document.getElementById("teamTwoThreePointsMade").innerHTML = a.threePointsMade2;
   document.getElementById("teamTwoThreePointsAttempted").innerHTML = a.threePointsMade2;
-  document.getElementById("teamTwoThreePointsAttempted").innerHTML = a.threePointPercentage2;
+  document.getElementById("teamTwoThreePointPercentage").innerHTML = a.threePointPercentage2;
 }
 
-function displayScore()
-{
+function displayScore() {
     document.getElementById("teamOneScore").innerHTML = team1.score1;
     document.getElementById("teamTwoScore").innerHTML = team2.score2;
 }
 
-function statsObject()
-{
+function statsObject() {
   var stats = new teamStats();
-  return stats
+  return stats;
 }
 
-  function startButton() 
-{
+function nameButton() {
+  team1.name = document.getElementById("teamOneName").value;
+  team2.name = document.getElementById("teamTwoName").value;
+  document.getElementById("name1").innerHTML = team1.name;
+  document.getElementById("name2").innerHTML = team2.name;
+  document.getElementById("name3").innerHTML = team1.name;
+  document.getElementById("name4").innerHTML = team2.name;
+  document.getElementById("name5").innerHTML = team1.name;
+  document.getElementById("name6").innerHTML = team2.name;
+}
+
+function startButton() {
   jumpBall();
   displayScore();
   displayTeamStats();
   displayStats();
   winner();
-//document.getElementById("myText").innerHTML = player1.name;
 }
 
-function resetButton()
-{
+function resetButton() {
    reset();
    displayStats();
    displayScore();
    winner();
 }
 
-function winner()
-{
+function winner() {
   if (team1.score1 > team2.score2)
   {
-  document.getElementById("winner").innerHTML = "Team 1 wins it!"
+  document.getElementById("winner").innerHTML = "" + team1.name + " wins it!";
   } else if (team1.score1 == team2.score2)
   {
   document.getElementById("winner").innerHTML = "";
   } else 
   {
-  document.getElementById("winner").innerHTML = "Team 2 wins it!"
+  document.getElementById("winner").innerHTML = "" + team2.name + " wins it!";
   }
 }
 
 </script>
   <div class="content">
     <h1>Basketball Simulator</h1>
-    <h2> Team 1: <span id="teamOneScore"> </span> </h2>  
-    <h2> Team 2: <span id="teamTwoScore"> </span></h2>  
-    <h3> <span id="winner"></span> </h3>   
 
+  <label for="teamName">Enter team one name</label>
+  <input type="text" id="teamOneName" name="teamOneName"><br><br>
+  <label for="lname">Enter team two name</label>
+  <input type="text" id="teamTwoName" name="teamTwoName"><br><br>
+  <button class="button is-dark" onclick="nameButton()"> Update </button>
+
+    <div class="columns is-size-2">
+      <div class="column is-one-fifth has-text-centered">
+      <h3 id="name1"> Team 1 </h3>
+        <div class="score is-size-1"> <span id="teamOneScore"> 00 </span>
+        </div>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+      <h3 id="name2"> Team 2 </h3>
+        <div class="score is-size-1"> <span id="teamTwoScore"> 00 </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="content">
+    <h1> <span id="winner"></span> </h1>  
    <button class="button is-dark" onclick="startButton()"> Start Game </button>
    <button class="button is-dark" onclick="resetButton()"> Reset </button>
-  </div>
-     
+   </div>
      <h2>Player Stats</h2> 
     <table id="boxScore">
       <tr>
-        <td> <b> Team 1 </b> </td>
+        <td> <b> <span id="name3"> Team 1 </span> </b> </td>
         <td> <b> Points </b> </td>
         <td> <b> Rebounds </b> </td>
         <td> <b> Assists </b> </td>
@@ -183,7 +204,7 @@ function winner()
       </tr>
 
       <tr>
-        <td> <b> Team 2 </b> </td>
+        <td> <b> <span id="name4"> Team 2</span> </b> </td>
         <td> <b> Points </b> </td>
         <td> <b> Rebounds </b> </td>
         <td> <b> Assists </b> </td>
@@ -224,7 +245,7 @@ function winner()
     <h2>Team Stats</h2>
       <table id="teamBoxScore">
       <tr>
-        <td> <b> Team 1 </b> </td>
+        <td> <b> <span id="name5"> Team 1 </span> </b> </td>
         <td> <b> PTS </b> </td>
         <td> <b> RBS </b> </td>
         <td> <b> ORB </b> </td>
@@ -256,7 +277,7 @@ function winner()
         <td><span id ="teamOneThreePointPercentage"> </span></td>
       </tr>
       <tr>
-        <td> <b> Team 2 </b> </td>
+        <td> <b> <span id="name6"> Team 2 </span> </b> </td>
         <td> <b> PTS </b> </td>
         <td> <b> RBS </b> </td>
         <td> <b> ORB </b> </td>
@@ -288,6 +309,8 @@ function winner()
         <td><span id ="teamTwoThreePointPercentage"> </span></td>
       </tr>
     </table>
+
+    <div id="plays"></div>
   </body>
 <script type="text/javascript" src="bball.js"></script>
 </html>
