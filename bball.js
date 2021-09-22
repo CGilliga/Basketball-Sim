@@ -1,3 +1,22 @@
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
 function Player(name, passing, twoP, threeP, tend) {
   this.name = name;
   this.twoPointers = twoP;
@@ -35,7 +54,7 @@ function teamStats() {
   this.threePointsMade = player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade;
   this.threePointPercentage = Math.round(((player1.threePointsMade + player2.threePointsMade + player3.threePointsMade + player4.threePointsMade + player5.threePointsMade) / (player1.threePointsAttempted + player2.threePointsAttempted + player3.threePointsAttempted + player4.threePointsAttempted + player5.threePointsAttempted) * 100 + Number.EPSILON) * 100) / 100;
  
-  this.points2 = player6.points + player7.points + player8.points + player9.points + player10.points;   // could make these part of a copy object for encapsulation? 
+  this.points2 = player6.points + player7.points + player8.points + player9.points + player10.points;
   this.defensiveRebounds2 = player6.defensiveRebounds + player7.defensiveRebounds + player8.defensiveRebounds + player9.defensiveRebounds + player10.defensiveRebounds;
   this.offensiveRebounds2 = player6.offensiveRebounds + player7.offensiveRebounds + player8.offensiveRebounds + player9.offensiveRebounds + player10.offensiveRebounds;
   this.rebounds2 = player6.rebounds + player7.rebounds + player8.rebounds + player9.rebounds + player10.rebounds;
@@ -68,6 +87,8 @@ let target = 100;
 
 let team1 = {name, player1, player2, player3, player4, player5, score1};
 let team2 = {name, player6, player7, player8, player9, player10, score2};
+team1.name = "Team 1";
+team2.name = "Team 2";
 let possession = 0;
 let assister = 0;
 
@@ -80,50 +101,33 @@ function printStats(obj) {
   + obj.threePointPercentage);
 }
 
-function reset() {
- player1.points = 0; player1.defensiveRebounds = 0;player1.offensiveRebounds = 0; player1.rebounds = 0;
-  player1.assists = 0;player1.fieldGoalsAttempted = 0;player1.fieldGoalsMade = 0; player1.fieldGoalPercentage = 0; player1.twoPointsAttempted = 0;
-  player1.twoPointsMade = 0; player1.twoPointPercentage = 0; player1.threePointsAttempted = 0; player1.threePointsMade = 0;
-  player1.threePointPercentage = 0;
- player2.points = 0; player2.defensiveRebounds = 0;player2.offensiveRebounds = 0; player2.rebounds = 0;
-  player2.assists = 0;player2.fieldGoalsAttempted = 0;player2.fieldGoalsMade = 0; player2.fieldGoalPercentage = 0; player2.twoPointsAttempted = 0;
-  player2.twoPointsMade = 0; player2.twoPointPercentage = 0; player2.threePointsAttempted = 0; player2.threePointsMade = 0;
-  player2.threePointPercentage = 0;
- player3.points = 0; player3.defensiveRebounds = 0;player3.offensiveRebounds = 0; player3.rebounds = 0;
-  player3.assists = 0;player3.fieldGoalsAttempted = 0;player3.fieldGoalsMade = 0; player3.fieldGoalPercentage = 0; player3.twoPointsAttempted = 0;
-  player3.twoPointsMade = 0; player3.twoPointPercentage = 0; player3.threePointsAttempted = 0; player3.threePointsMade = 0;
-  player3.threePointPercentage = 0;
- player4.points = 0; player4.defensiveRebounds = 0;player4.offensiveRebounds = 0; player4.rebounds = 0;
-  player4.assists = 0;player4.fieldGoalsAttempted = 0;player4.fieldGoalsMade = 0; player4.fieldGoalPercentage = 0; player4.twoPointsAttempted = 0;
-  player4.twoPointsMade = 0; player4.twoPointPercentage = 0; player4.threePointsAttempted = 0; player4.threePointsMade = 0;
-  player4.threePointPercentage = 0;
-player5.points = 0; player5.defensiveRebounds = 0;player5.offensiveRebounds = 0; player5.rebounds = 0;
-  player5.assists = 0;player5.fieldGoalsAttempted = 0;player5.fieldGoalsMade = 0; player5.fieldGoalPercentage = 0; player5.twoPointsAttempted = 0;
-  player5.twoPointsMade = 0; player5.twoPointPercentage = 0; player5.threePointsAttempted = 0; player5.threePointsMade = 0;
-  player5.threePointPercentage = 0;
-player6.points = 0; player6.defensiveRebounds = 0;player6.offensiveRebounds = 0; player6.rebounds = 0;
-  player6.assists = 0;player6.fieldGoalsAttempted = 0;player6.fieldGoalsMade = 0; player6.fieldGoalPercentage = 0; player6.twoPointsAttempted = 0;
-  player6.twoPointsMade = 0; player6.twoPointPercentage = 0; player6.threePointsAttempted = 0; player6.threePointsMade = 0;
-  player6.threePointPercentage = 0;
-player7.points = 0; player7.defensiveRebounds = 0;player7.offensiveRebounds = 0; player7.rebounds = 0;
-  player7.assists = 0;player7.fieldGoalsAttempted = 0;player7.fieldGoalsMade = 0; player7.fieldGoalPercentage = 0; player7.twoPointsAttempted = 0;
-  player7.twoPointsMade = 0; player7.twoPointPercentage = 0; player7.threePointsAttempted = 0; player7.threePointsMade = 0;
-  player7.threePointPercentage = 0;
-player8.points = 0; player8.defensiveRebounds = 0;player8.offensiveRebounds = 0; player8.rebounds = 0;
-  player8.assists = 0;player5.fieldGoalsAttempted = 0;player8.fieldGoalsMade = 0; player8.fieldGoalPercentage = 0; player8.twoPointsAttempted = 0;
-  player8.twoPointsMade = 0; player8.twoPointPercentage = 0; player8.threePointsAttempted = 0; player8.threePointsMade = 0;
-  player8.threePointPercentage = 0;
-player9.points = 0; player9.defensiveRebounds = 0;player9.offensiveRebounds = 0; player9.rebounds = 0;
-  player9.assists = 0;player9.fieldGoalsAttempted = 0;player9.fieldGoalsMade = 0; player9.fieldGoalPercentage = 0; player9.twoPointsAttempted = 0;
-  player9.twoPointsMade = 0; player9.twoPointPercentage = 0; player9.threePointsAttempted = 0; player9.threePointsMade = 0;
-  player9.threePointPercentage = 0;
-player10.points = 0; player10.defensiveRebounds = 0;player10.offensiveRebounds = 0; player10.rebounds = 0;
-  player10.assists = 0;player10.fieldGoalsAttempted = 0;player10.fieldGoalsMade = 0; player10.fieldGoalPercentage = 0; player10.twoPointsAttempted = 0;
-  player10.twoPointsMade = 0; player10.twoPointPercentage = 0; player10.threePointsAttempted = 0; player10.threePointsMade = 0;
-  player10.threePointPercentage = 0;
-team1.score1 = 0;
-team2.score2 = 0;
+function playerReset(player) {
+  player.points = 0; player.defensiveRebounds = 0;player.offensiveRebounds = 0; player.rebounds = 0;
+  player.assists = 0;player.fieldGoalsAttempted = 0;player.fieldGoalsMade = 0; player.fieldGoalPercentage = 0; player.twoPointsAttempted = 0;
+  player.twoPointsMade = 0; player.twoPointPercentage = 0; player.threePointsAttempted = 0; player.threePointsMade = 0;
+  player.threePointPercentage = 0;
 }
+
+function reset() {
+	playerReset(player1);
+ 	playerReset(player2);
+  	playerReset(player3);
+  	playerReset(player4);
+  	playerReset(player5);
+  	playerReset(player6);
+  	playerReset(player7);
+  	playerReset(player8);
+  	playerReset(player9);
+  	playerReset(player10);
+ 	team1.score1 = 0;
+	team2.score2 = 0;
+}
+
+function resetPlayByPlay() {
+   	deleted = document.getElementById("plays");
+	deleted.innerHTML = "";
+}
+
 
 function allStats() {
   percentages(player1);
@@ -173,7 +177,7 @@ function allPercentages() {
 
 function printTeamStats() {
   //team1
-  teamPoints = player1.points + player2.points + player3.points + player4.points + player5.points;   // could make these part of a copy object for encapsulation? 
+  teamPoints = player1.points + player2.points + player3.points + player4.points + player5.points;   
   teamDefensiveRebounds = player1.defensiveRebounds + player2.defensiveRebounds + player3.defensiveRebounds + player4.defensiveRebounds + player5.defensiveRebounds;
   teamOffensiveRebounds = player1.offensiveRebounds + player2.offensiveRebounds + player3.offensiveRebounds + player4.offensiveRebounds + player5.offensiveRebounds;
   teamRebounds = player1.rebounds + player2.rebounds + player3.rebounds + player4.rebounds + player5.rebounds;
@@ -192,7 +196,7 @@ function printTeamStats() {
   + teamTwoPointsAttempted + " 2PM: " + teamTwoPointsMade + " 2P%: " + teamTwoPointPercentage 
   + " 3PA: " + teamThreePointsAttempted + " 3PM: " + teamThreePointsMade + " 3P%: " + teamThreePointPercentage)
 
-  teamPoints2 = player6.points + player7.points + player8.points + player9.points + player10.points;   // could make these part of a copy object for encapsulation? 
+  teamPoints2 = player6.points + player7.points + player8.points + player9.points + player10.points;   
   teamDefensiveRebounds2 = player6.defensiveRebounds + player7.defensiveRebounds + player8.defensiveRebounds + player9.defensiveRebounds + player10.defensiveRebounds;
   teamOffensiveRebounds2 = player6.offensiveRebounds + player7.offensiveRebounds + player8.offensiveRebounds + player9.offensiveRebounds + player10.offensiveRebounds;
   teamRebounds2 = player6.rebounds + player7.rebounds + player8.rebounds + player9.rebounds + player10.rebounds;
@@ -308,10 +312,8 @@ function pass(passer)
       // run receiver function
     } else 
     {
-   //   passer.ball = false;
       possessionChange();
       advance(randomPlayer());
-      //turnover stat / steal stat
       // new player ball true
     }
   } 
@@ -536,7 +538,6 @@ function twoShot(player) {
         rebound();
       }
     }
-  
 }
 
 function threePoint(player) {
