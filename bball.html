@@ -96,15 +96,64 @@ function statsObject() {
   return stats;
 }
 
-function nameButton() {
-  team1.name = document.getElementById("teamOneName").value;
-  team2.name = document.getElementById("teamTwoName").value;
-  document.getElementById("name1").innerHTML = team1.name;
-  document.getElementById("name2").innerHTML = team2.name;
-  document.getElementById("name3").innerHTML = team1.name;
-  document.getElementById("name4").innerHTML = team2.name;
-  document.getElementById("name5").innerHTML = team1.name;
-  document.getElementById("name6").innerHTML = team2.name;
+function teamNameButton() {
+  
+	if(document.getElementById("teamOneName").value != "") {
+	team1.name = document.getElementById("teamOneName").value;
+	document.getElementById("name1").innerHTML = team1.name;
+	document.getElementById("name3").innerHTML = team1.name;
+	document.getElementById("name5").innerHTML = team1.name;
+ 	} 
+
+	if(document.getElementById("teamTwoName").value != "") {
+	team2.name = document.getElementById("teamTwoName").value;
+	document.getElementById("name2").innerHTML = team2.name;
+	document.getElementById("name4").innerHTML = team2.name;
+	document.getElementById("name6").innerHTML = team2.name;
+ 	}
+}
+
+function playerNameButton() {
+
+	if(document.getElementById("playerOneName").value != "") {
+ 	player1.name = document.getElementById("playerOneName").value;
+	}
+
+	if(document.getElementById("playerTwoName").value != "") {
+ 	player2.name = document.getElementById("playerTwoName").value;
+	}
+
+	if(document.getElementById("playerThreeName").value != "") {
+ 	player3.name = document.getElementById("playerThreeName").value;
+	}
+
+	if(document.getElementById("playerFourName").value != "") {
+ 	player4.name = document.getElementById("playerFourName").value;
+	}
+
+	if(document.getElementById("playerFiveName").value != "") {
+ 	player5.name = document.getElementById("playerFiveName").value;
+	}
+
+	if(document.getElementById("playerSixName").value != "") {
+ 	player6.name = document.getElementById("playerSixName").value;
+	}
+
+	if(document.getElementById("playerSevenName").value != "") {
+ 	player7.name = document.getElementById("playerSevenName").value;
+	}
+
+	if(document.getElementById("playerEightName").value != "") {
+ 	player8.name = document.getElementById("playerEightName").value;
+	}
+
+	if(document.getElementById("playerNineName").value != "") {
+ 	player9.name = document.getElementById("playerNineName").value;
+	}
+	
+	if(document.getElementById("playerTenName").value != "") {
+ 	player10.name = document.getElementById("playerTenName").value;	
+	}
 }
 
 function startButton() {
@@ -117,6 +166,7 @@ function startButton() {
 
 function resetButton() {
    reset();
+   resetPlayByPlay();
    displayStats();
    displayScore();
    winner();
@@ -139,11 +189,41 @@ function winner() {
   <div class="content">
     <h1>Basketball Simulator</h1>
 
+
+  <button class="accordion">Click to edit team names</button>
+  <div class="panel">
   <label for="teamName">Enter team one name</label>
   <input type="text" id="teamOneName" name="teamOneName"><br><br>
-  <label for="lname">Enter team two name</label>
+  <label for="teamName">Enter team two name</label>
   <input type="text" id="teamTwoName" name="teamTwoName"><br><br>
-  <button class="button is-dark" onclick="nameButton()"> Update </button>
+  <button class="button is-dark" onclick="teamNameButton()"> Update </button> <br><br> 
+  </div>
+
+
+  <button class="accordion">Click to edit player names</button>
+  <div class="panel">
+  <label for="playerName">Enter player one name</label>
+  <input type="text" id="playerOneName" name="playerOneName"><br><br>
+  <label for="playerName">Enter player two name</label>
+  <input type="text" id="playerTwoName" name="playerTwoName"><br><br>
+  <label for="playerName">Enter player three name</label>
+  <input type="text" id="playerThreeName" name="playerThreeName"><br><br>
+  <label for="playerName">Enter player four name</label>
+  <input type="text" id="playerFourName" name="playerFourName"><br><br>
+  <label for="playerName">Enter player five name</label>
+  <input type="text" id="playerFiveName" name="playerFiveName"><br><br>
+  <label for="playerName">Enter player six name</label>
+  <input type="text" id="playerSixName" name="playerSixName"><br><br>
+  <label for="playerName">Enter player seven name</label>
+  <input type="text" id="playerSevenName" name="playerSevenName"><br><br>
+  <label for="playerName">Enter player eight name</label>
+  <input type="text" id="playerEightName" name="playerEightName"><br><br>
+  <label for="playerName">Enter player nine name</label>
+  <input type="text" id="playerNineName" name="playerNineName"><br><br>
+  <label for="playerName">Enter player ten name</label>
+  <input type="text" id="playerTenName" name="playerTenName"><br><br>
+  <button class="button is-dark" onclick="playerNameButton()"> Update </button>
+  </div>
 
     <div class="columns is-size-2">
       <div class="column is-one-fifth has-text-centered">
@@ -310,7 +390,13 @@ function winner() {
       </tr>
     </table>
 
+	<br>
+    
+      <button class="accordion">Click to display play-by-play</button>
+      <div class="panel">
     <div id="plays"></div>
+      </div>
+
   </body>
 <script type="text/javascript" src="bball.js"></script>
 </html>
