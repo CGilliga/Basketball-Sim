@@ -10,7 +10,7 @@
   <body>
 
 <script type="text/javascript"> 
-
+	
   function displayStats() {
   document.getElementById("playerOne").innerHTML = player1.name;
   document.getElementById("playerOnePoints").innerHTML = player1.points;
@@ -96,64 +96,75 @@ function statsObject() {
   return stats;
 }
 
+function teamNameResetButton() {
+  team1.name = "Team 1";
+  team2.name = "Team 2";
+  document.getElementById("name1").innerHTML = team1.name;
+  document.getElementById("name2").innerHTML = team2.name;
+  document.getElementById("name3").innerHTML = team1.name;
+  document.getElementById("name4").innerHTML = team2.name;
+  document.getElementById("name5").innerHTML = team1.name;
+  document.getElementById("name6").innerHTML = team2.name;
+}
+
 function teamNameButton() {
   
-	if(document.getElementById("teamOneName").value != "") {
-	team1.name = document.getElementById("teamOneName").value;
-	document.getElementById("name1").innerHTML = team1.name;
-	document.getElementById("name3").innerHTML = team1.name;
-	document.getElementById("name5").innerHTML = team1.name;
- 	} 
+  if(document.getElementById("teamOneName").value != "") {
+  team1.name = document.getElementById("teamOneName").value;
+  document.getElementById("name1").innerHTML = team1.name;
+  document.getElementById("name3").innerHTML = team1.name;
+  document.getElementById("name5").innerHTML = team1.name;
+  } 
 
-	if(document.getElementById("teamTwoName").value != "") {
-	team2.name = document.getElementById("teamTwoName").value;
-	document.getElementById("name2").innerHTML = team2.name;
-	document.getElementById("name4").innerHTML = team2.name;
-	document.getElementById("name6").innerHTML = team2.name;
- 	}
+  if(document.getElementById("teamTwoName").value != "") {
+  team2.name = document.getElementById("teamTwoName").value;
+  document.getElementById("name2").innerHTML = team2.name;
+  document.getElementById("name4").innerHTML = team2.name;
+  document.getElementById("name6").innerHTML = team2.name;
+  }
 }
 
 function playerNameButton() {
 
-	if(document.getElementById("playerOneName").value != "") {
- 	player1.name = document.getElementById("playerOneName").value;
-	}
+  if(document.getElementById("playerOneName").value != "") {
+  player1.name = document.getElementById("playerOneName").value;
+  }
 
-	if(document.getElementById("playerTwoName").value != "") {
- 	player2.name = document.getElementById("playerTwoName").value;
-	}
+  if(document.getElementById("playerTwoName").value != "") {
+  player2.name = document.getElementById("playerTwoName").value;
+  }
 
-	if(document.getElementById("playerThreeName").value != "") {
- 	player3.name = document.getElementById("playerThreeName").value;
-	}
+  if(document.getElementById("playerThreeName").value != "") {
+  player3.name = document.getElementById("playerThreeName").value;
+  }
 
-	if(document.getElementById("playerFourName").value != "") {
- 	player4.name = document.getElementById("playerFourName").value;
-	}
+  if(document.getElementById("playerFourName").value != "") {
+  player4.name = document.getElementById("playerFourName").value;
+  }
 
-	if(document.getElementById("playerFiveName").value != "") {
- 	player5.name = document.getElementById("playerFiveName").value;
-	}
+  if(document.getElementById("playerFiveName").value != "") {
+  player5.name = document.getElementById("playerFiveName").value;
+  }
 
-	if(document.getElementById("playerSixName").value != "") {
- 	player6.name = document.getElementById("playerSixName").value;
-	}
+  if(document.getElementById("playerSixName").value != "") {
+  player6.name = document.getElementById("playerSixName").value;
+  }
 
-	if(document.getElementById("playerSevenName").value != "") {
- 	player7.name = document.getElementById("playerSevenName").value;
-	}
+  if(document.getElementById("playerSevenName").value != "") {
+  player7.name = document.getElementById("playerSevenName").value;
+  }
 
-	if(document.getElementById("playerEightName").value != "") {
- 	player8.name = document.getElementById("playerEightName").value;
-	}
+  if(document.getElementById("playerEightName").value != "") {
+  player8.name = document.getElementById("playerEightName").value;
+  }
 
-	if(document.getElementById("playerNineName").value != "") {
- 	player9.name = document.getElementById("playerNineName").value;
-	}
-	
-	if(document.getElementById("playerTenName").value != "") {
- 	player10.name = document.getElementById("playerTenName").value;	
-	}
+  if(document.getElementById("playerNineName").value != "") {
+  player9.name = document.getElementById("playerNineName").value;
+  }
+  
+  if(document.getElementById("playerTenName").value != "") {
+  player10.name = document.getElementById("playerTenName").value; 
+  }
 }
 
 function startButton() {
@@ -196,7 +207,9 @@ function winner() {
   <input type="text" id="teamOneName" name="teamOneName"><br><br>
   <label for="teamName">Enter team two name</label>
   <input type="text" id="teamTwoName" name="teamTwoName"><br><br>
-  <button class="button is-dark" onclick="teamNameButton()"> Update </button> <br><br> 
+  <button class="button is-dark" onclick="teamNameButton()"> Update </button> 
+  <button class="button is-dark" onclick="teamNameResetButton()"> Reset </button> 
+  <br><br> 
   </div>
 
 
@@ -223,6 +236,13 @@ function winner() {
   <label for="playerName">Enter player ten name</label>
   <input type="text" id="playerTenName" name="playerTenName"><br><br>
   <button class="button is-dark" onclick="playerNameButton()"> Update </button>
+  </div>
+  
+  
+  <button class="accordion">Click to edit player attributes</button>
+  <div class="panel">
+    
+    <button class="button is-dark" onclick="randomiserButton()"> Randomise attributes </button>
   </div>
 
     <div class="columns is-size-2">
@@ -390,7 +410,7 @@ function winner() {
       </tr>
     </table>
 
-	<br>
+  <br>
     
       <button class="accordion">Click to display play-by-play</button>
       <div class="panel">
@@ -398,5 +418,5 @@ function winner() {
       </div>
 
   </body>
-<script type="text/javascript" src="bball.js"></script>
+<script type="text/javascript" src="bballsandbox.js"></script>
 </html>
