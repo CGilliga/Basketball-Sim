@@ -1,22 +1,3 @@
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-
 function Player(name, passing, twoP, threeP, tend) {
   this.name = name;
   this.twoPointers = twoP;
@@ -75,11 +56,11 @@ var player3 = new Player('J.R Smith', 7, 7, 7, 4);
 var player4 = new Player('Ryan Anderson', 8, 6, 7, 4);
 var player5 = new Player('Mehmet Okur', 6, 7, 8, 4);
 
-var player6 = new Player('John Stickton', 10, 9, 8, 9);
-var player7 = new Player('Toby Bryant', 8, 8, 8, 2);
-var player8 = new Player('Labrun James', 10, 8, 7, 7);
-var player9 = new Player('Jim Duncan', 8, 9, 4, 3);
-var player10 = new Player('Bill Wilton', 10, 8, 3, 8);
+var player6 = new Player('John Stockton', 10, 9, 8, 9);
+var player7 = new Player('Kobe Bryant', 8, 8, 8, 2);
+var player8 = new Player('Lebron James', 10, 8, 7, 7);
+var player9 = new Player('Tim Duncan', 8, 9, 4, 3);
+var player10 = new Player('Bill Walton', 10, 8, 3, 8);
 
 let score1 = 0;
 let score2 = 0;
@@ -109,23 +90,43 @@ function playerReset(player) {
 }
 
 function reset() {
-	playerReset(player1);
- 	playerReset(player2);
-  	playerReset(player3);
-  	playerReset(player4);
-  	playerReset(player5);
-  	playerReset(player6);
-  	playerReset(player7);
-  	playerReset(player8);
-  	playerReset(player9);
-  	playerReset(player10);
- 	team1.score1 = 0;
-	team2.score2 = 0;
+  playerReset(player1);
+  playerReset(player2);
+    playerReset(player3);
+    playerReset(player4);
+    playerReset(player5);
+    playerReset(player6);
+    playerReset(player7);
+    playerReset(player8);
+    playerReset(player9);
+    playerReset(player10);
+  team1.score1 = 0;
+  team2.score2 = 0;
 }
 
 function resetPlayByPlay() {
-   	deleted = document.getElementById("plays");
-	deleted.innerHTML = "";
+  deleted = document.getElementById("plays");
+  deleted.innerHTML = "";
+}
+
+function playerAttributeRandomiser(player){
+  player.passing = getRandomInt(1, 11);
+  player.twoPointers = getRandomInt(1, 11);
+  player.threePointers = getRandomInt(1, 11);
+  player.passTendency = getRandomInt(1, 11);
+}
+
+function randomiserButton() {
+  playerAttributeRandomiser(player1);
+  playerAttributeRandomiser(player2);
+  playerAttributeRandomiser(player3);
+  playerAttributeRandomiser(player4);
+  playerAttributeRandomiser(player5);
+  playerAttributeRandomiser(player6);
+  playerAttributeRandomiser(player7);
+  playerAttributeRandomiser(player8);
+  playerAttributeRandomiser(player9);
+  playerAttributeRandomiser(player10);
 }
 
 
@@ -232,14 +233,14 @@ function jumpBall() {
   {
     possession = 1;
  //   player1.ball = true; 
-    addPlay("Team1 secure the tip");
+    addPlay(team1.name + " secure the tip");
     advance(randomPlayer());
   }
   else
   {
     possession = 2;
  //   player2.ball = true; 
-    addPlay("Team2 secure the tip");
+    addPlay(team2.name + " secure the tip");
     advance(randomPlayer());
   }
 }
@@ -251,11 +252,11 @@ function advance(advancer) {
  // advancer.ball =  true;
   if (team1.score1 >= target)
   {
-    addPlay("game over, team1 win it");
+    addPlay("game over, " + team1.name + " wins it");
     printTeamStats();
   } else if (team2.score2 >= target)  
   { 
-    addPlay("game over, team2 win it");
+    addPlay("game over, " + team2.name + " wins it");
     printTeamStats();
   } 
   else 
@@ -264,26 +265,26 @@ function advance(advancer) {
   {
     if (b < 0.95)
     {
-    addPlay("Team1 advance the ball ");
+    addPlay(team1.name + " advance the ball ");
     chooseOffence(advancer);
     } else
     {
   //  advancer.ball = false;
     possessionChange();
-    addPlay("Team1 turn it over!"); 
+    addPlay(team1.name + " turn it over!"); 
     advance(randomPlayer());  
     }
   } else 
     {
     if (b < 0.95)
     {
-    addPlay("Team2 advance the ball ");
+    addPlay(team2.name + " advance the ball ");
     chooseOffence(advancer);
     } else
     {
   //  advancer.ball = false;
     possessionChange();
-    addPlay("Team2 turn it over!");   
+    addPlay(team2.name + " turn it over!");   
     advance(randomPlayer());
     }
     }
@@ -426,11 +427,11 @@ function possessionChange() {
   if (possession == 1)
   {
     possession = 2;
-    addPlay("team2 with the ball");
+    addPlay(team2.name + " with the ball");
   } else
   {
     possession = 1;
-    addPlay("team1 with the ball");
+    addPlay(team1.name + " with the ball");
   }
 }
 
@@ -443,14 +444,14 @@ function rebound() {
     {
     possessionChange();
     rebounder = randomPlayer();
-    addPlay("" + rebounder.name + " get's the defensive rebound for Team2");  
+    addPlay("" + rebounder.name + " get's the defensive rebound for " + team2.name);  
     rebounder.rebounds += 1;
     rebounder.defensiveRebounds += 1;
     advance(rebounder);
     } else
     {
     rebounder = randomPlayer();
-    addPlay("" + rebounder.name + " with the offensive rebound for Team1!");
+    addPlay("" + rebounder.name + " with the offensive rebound for " + team1.name + "!");
     rebounder.rebounds += 1;
     rebounder.offensiveRebounds += 1;
     layUp(rebounder);
@@ -461,14 +462,14 @@ function rebound() {
     {
     possessionChange();
     rebounder = randomPlayer();
-    addPlay("" + rebounder.name + " get's the defensive rebound for Team1");
+    addPlay("" + rebounder.name + " get's the defensive rebound for " + team1.name);
     rebounder.rebounds += 1;
     rebounder.defensiveRebounds += 1;
     advance(rebounder);
     } else
     {
     rebounder = randomPlayer();
-    addPlay("" + rebounder.name + " with the offensive rebound for Team2!");
+    addPlay("" + rebounder.name + " with the offensive rebound for " + team2.name + "!");
     rebounder.rebounds += 1;
     rebounder.offensiveRebounds += 1;
     layUp(rebounder);
@@ -496,10 +497,10 @@ function twoShot(player) {
       
       if (typeof(assister) == "object") 
       {
-      addPlay("The 2 is good by " + shooter.name + " for Team1. Assisted by " + assister.name + ". They now have " + team1.score1 + " points");
+      addPlay("The 2 is good by " + shooter.name + " for " + team1.name + ". Assisted by " + assister.name + ". It's now " + team1.score1 + "-" + team2.score2);
       } else 
       {
-      addPlay("The 2 is good by " + shooter.name + " for Team1. They now have " + team1.score1 + " points");
+      addPlay("The 2 is good by " + shooter.name + " for " + team1.name +  ". It's now " + team1.score1 + "-" + team2.score2);
       }
       possessionChange();
       advance(randomPlayer());
@@ -507,7 +508,7 @@ function twoShot(player) {
       {
         shooter.twoPointsAttempted += 1;
         shooter.fieldGoalsAttempted += 1;
-        addPlay("The 2 is no good by " + shooter.name + " for team1");
+        addPlay("The 2 is no good by " + shooter.name + " for " + team1.name);
         rebound();
       }
   } else 
@@ -523,10 +524,10 @@ function twoShot(player) {
       assister.assists += 1;
       if (typeof(assister) == "object") 
       {
-      addPlay("The 2 is good by " + shooter.name + " for Team2. Assisted by " + assister.name + ". They now have " + team2.score2 + " points");
+      addPlay("The 2 is good by " + shooter.name + " for " + team2.name + ". Assisted by " + assister.name + ". It's now " + team1.score1 + "-" + team2.score2);
       } else
       {
-      addPlay("The 2 is good by " + shooter.name + " for Team2. They now have " + team2.score2 + " points");  
+      addPlay("The 2 is good by " + shooter.name + " for " + team2.name + ". It's now " + team1.score1 + "-" + team2.score2);  
       }
       possessionChange();
       advance(randomPlayer());
@@ -534,7 +535,7 @@ function twoShot(player) {
       {
         shooter.twoPointsAttempted += 1;
         shooter.fieldGoalsAttempted += 1;
-        addPlay("The 2 is no good by " + shooter.name + " for Team2");
+        addPlay("The 2 is no good by " + shooter.name + " for " + team2.name);
         rebound();
       }
     }
@@ -558,10 +559,10 @@ function threePoint(player) {
       assister.assists += 1;
       if (typeof(assister) == "object") 
       {
-      addPlay("The 3 is good by " + shooter.name + " for Team1. Assisted by " + assister.name + ". They now have " + team1.score1 + " points");
+      addPlay("The 3 is good by " + shooter.name + " for " + team1.name + ". Assisted by " + assister.name + ". It's now " + team1.score1 + "-" + team2.score2);
       } else
       {
-      addPlay("The 3 is good by " + shooter.name + ". Team1 now have " + team1.score1 + " points");  
+      addPlay("The 3 is good by " + shooter.name + ". It's now " + team1.score1 + "-" + team2.score2);  
       }
       possessionChange();
       advance(randomPlayer());
@@ -569,7 +570,7 @@ function threePoint(player) {
       {
         shooter.threePointsAttempted +=1;
         shooter.fieldGoalsAttempted += 1;
-        addPlay("The 3 is no good by "  + shooter.name + " for Team1");
+        addPlay("The 3 is no good by "  + shooter.name + " for " + team1.name);
         rebound();
       }
   } else 
@@ -585,10 +586,10 @@ function threePoint(player) {
       assister.assists += 1;
       if (typeof(assister) == "object") 
       {
-      addPlay("The 3 is good by " + shooter.name + " for Team2. Assisted by " + assister.name + ". They now have " + team2.score2 + " points");
+      addPlay("The 3 is good by " + shooter.name + " for " + team2.name +  ". Assisted by " + assister.name + ". It's now " + team1.score1 + "-" + team2.score2);
       } else
       {
-      addPlay("The 3 is good by " + shooter.name + ". Team2 now have " + team2.score2 + " points");  
+      addPlay("The 3 is good by " + shooter.name + ". It's now " + team1.score1 + "-" + team2.score2);  
       }
       possessionChange();
       advance(randomPlayer());
@@ -596,7 +597,7 @@ function threePoint(player) {
       {
         shooter.fieldGoalsAttempted += 1;
         shooter.threePointsAttempted += 1;
-        addPlay("The 3 is no good by "  + shooter.name + " for Team2");
+        addPlay("The 3 is no good by "  + shooter.name + " for " + team2.name);
         rebound();
       }
     }
@@ -620,10 +621,10 @@ function layUp(player) {
       assister.assists += 1;
       if (typeof(assister) == "object") 
       {
-      addPlay("The lay-up is good by " + shooter.name + " for Team1. Assisted by " + assister.name + ". They now have " + team1.score1 + " points");
+      addPlay("The lay-up is good by " + shooter.name + " for " + team1.name + ". Assisted by " + assister.name + ". It's now " + team1.score1 + "-" + team2.score2);
       } else
       {
-      addPlay("The lay-up is good by " + shooter.name + ". Team1 now have " + team1.score1 + " points");  
+      addPlay("The lay-up is good by " + shooter.name + " for " + team1.name + ". It's now " + team1.score1 + "-" + team2.score2);  
       }
       possessionChange();
       advance(randomPlayer());
@@ -631,7 +632,7 @@ function layUp(player) {
       {
         shooter.twoPointsAttempted += 1;
         shooter.fieldGoalsAttempted += 1;
-        addPlay("The lay-up is no good by " + shooter.name + " for team1");
+        addPlay("The lay-up is no good by " + shooter.name + " for " + team1.name);
         rebound();
       }
     } else 
@@ -647,10 +648,10 @@ function layUp(player) {
       assister.assists += 1;
       if (typeof(assister) == "object") 
       {
-      addPlay("The lay-up is good by " + shooter.name + " for Team2. Assisted by " + assister.name + ". They now have " + team2.score2 + " points");
+      addPlay("The lay-up is good by " + shooter.name + " for " + team2.name + ". Assisted by " + assister.name + ". It's now " + team1.score1 + "-" + team2.score2);
       } else
       {
-      addPlay("The lay-up is good by " + shooter.name + ". Team2 now have " + team2.score2 + " points");  
+      addPlay("The lay-up is good by " + shooter.name + " for " + team2.name + ". It's now " + team1.score1 + "-" + team2.score2);  
       }
       possessionChange();
       advance(randomPlayer());
@@ -658,8 +659,28 @@ function layUp(player) {
       {
         shooter.twoPointsAttempted += 1;
         shooter.fieldGoalsAttempted += 1;
-        addPlay("The lay-up is no good by " + shooter.name + " for Team2");
+        addPlay("The lay-up is no good by " + shooter.name + " for " + team2.name);
         rebound();
       }
     }
+}
+
+// accordion
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
 }
