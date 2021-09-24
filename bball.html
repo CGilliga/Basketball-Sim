@@ -68,7 +68,7 @@
   document.getElementById("teamOneTwoPointsAttempted").innerHTML = a.twoPointsAttempted;
   document.getElementById("teamOneTwoPointPercentage").innerHTML = a.twoPointPercentage;
   document.getElementById("teamOneThreePointsMade").innerHTML = a.threePointsMade;
-  document.getElementById("teamOneThreePointsAttempted").innerHTML = a.threePointsMade;
+  document.getElementById("teamOneThreePointsAttempted").innerHTML = a.threePointsAttempted;
   document.getElementById("teamOneThreePointPercentage").innerHTML = a.threePointPercentage;
 
   document.getElementById("teamTwoPoints").innerHTML = a.points2;
@@ -82,7 +82,7 @@
   document.getElementById("teamTwoTwoPointsAttempted").innerHTML = a.twoPointsAttempted2;
   document.getElementById("teamTwoTwoPointPercentage").innerHTML = a.twoPointPercentage2;
   document.getElementById("teamTwoThreePointsMade").innerHTML = a.threePointsMade2;
-  document.getElementById("teamTwoThreePointsAttempted").innerHTML = a.threePointsMade2;
+  document.getElementById("teamTwoThreePointsAttempted").innerHTML = a.threePointsAttempted2;
   document.getElementById("teamTwoThreePointPercentage").innerHTML = a.threePointPercentage2;
 }
 
@@ -94,6 +94,130 @@ function displayScore() {
 function statsObject() {
   var stats = new teamStats();
   return stats;
+}
+
+function editAttributes() {
+  document.getElementById("pOne").value = player1.name;
+  document.getElementById("pOnePass").value = player1.passing;
+  document.getElementById("pOneTwoP").value = player1.twoPointers;
+  document.getElementById("pOneThreeP").value = player1.threePointers;
+  document.getElementById("pOnePassTend").value = player1.passTendency;
+  
+  document.getElementById("pTwo").value = player2.name;
+  document.getElementById("pTwoPass").value = player2.passing;
+  document.getElementById("pTwoTwoP").value = player2.twoPointers;
+  document.getElementById("pTwoThreeP").value = player2.threePointers;
+  document.getElementById("pTwoPassTend").value = player2.passTendency;
+  
+  document.getElementById("pThree").value = player3.name;
+  document.getElementById("pThreePass").value = player3.passing;
+  document.getElementById("pThreeTwoP").value = player3.twoPointers;
+  document.getElementById("pThreeThreeP").value = player3.threePointers;
+  document.getElementById("pThreePassTend").value = player3.passTendency;
+  
+  document.getElementById("pFour").value = player4.name;
+  document.getElementById("pFourPass").value = player4.passing;
+  document.getElementById("pFourTwoP").value = player4.twoPointers;
+  document.getElementById("pFourThreeP").value = player4.threePointers;
+  document.getElementById("pFourPassTend").value = player4.passTendency;
+  
+  document.getElementById("pFive").value = player5.name;
+  document.getElementById("pFivePass").value = player5.passing;
+  document.getElementById("pFiveTwoP").value = player5.twoPointers;
+  document.getElementById("pFiveThreeP").value = player5.threePointers;
+  document.getElementById("pFivePassTend").value = player5.passTendency;
+  
+  document.getElementById("pSix").value = player6.name;
+  document.getElementById("pSixPass").value = player6.passing;
+  document.getElementById("pSixTwoP").value = player6.twoPointers;
+  document.getElementById("pSixThreeP").value = player6.threePointers;
+  document.getElementById("pSixPassTend").value = player6.passTendency;
+  
+  document.getElementById("pSeven").value = player7.name;
+  document.getElementById("pSevenPass").value = player7.passing;
+  document.getElementById("pSevenTwoP").value = player7.twoPointers;
+  document.getElementById("pSevenThreeP").value = player7.threePointers;
+  document.getElementById("pSevenPassTend").value = player7.passTendency;
+  
+  document.getElementById("pEight").value = player8.name;
+  document.getElementById("pEightPass").value = player8.passing;
+  document.getElementById("pEightTwoP").value = player8.twoPointers;
+  document.getElementById("pEightThreeP").value = player8.threePointers;
+  document.getElementById("pEightPassTend").value = player8.passTendency;
+  
+  document.getElementById("pNine").value = player9.name;
+  document.getElementById("pNinePass").value = player9.passing;
+  document.getElementById("pNineTwoP").value = player9.twoPointers;
+  document.getElementById("pNineThreeP").value = player9.threePointers;
+  document.getElementById("pNinePassTend").value = player9.passTendency;
+  
+  document.getElementById("pTen").value = player10.name;
+  document.getElementById("pTenPass").value = player10.passing;
+  document.getElementById("pTenTwoP").value = player10.twoPointers;
+  document.getElementById("pTenThreeP").value = player10.threePointers;
+  document.getElementById("pTenPassTend").value = player10.passTendency;
+}
+
+function editAttributesUpdate() {
+  player1.name = document.getElementById("pOne").value;
+  player1.passing = document.getElementById("pOnePass").value;
+  player1.twoPointers = document.getElementById("pOneTwoP").value;
+  player1.threePointers = document.getElementById("pOneThreeP").value;
+  player1.passTendency = document.getElementById("pOnePassTend").value;
+ 
+  player2.name = document.getElementById("pTwo").value;
+  player2.passing = document.getElementById("pTwoPass").value ;
+  player2.twoPointers = document.getElementById("pTwoTwoP").value;
+  player2.threePointers = document.getElementById("pTwoThreeP").value;
+  player2.passTendency = document.getElementById("pTwoPassTend").value;
+  
+  player3.name = document.getElementById("pThree").value;
+  player3.passing = document.getElementById("pThreePass").value ;
+  player3.twoPointers = document.getElementById("pThreeTwoP").value;
+  player3.threePointers = document.getElementById("pThreeThreeP").value;
+  player3.passTendency = document.getElementById("pThreePassTend").value;
+  
+  player4.name = document.getElementById("pFour").value;
+  player4.passing = document.getElementById("pFourPass").value ;
+  player4.twoPointers = document.getElementById("pFourTwoP").value;
+  player4.threePointers = document.getElementById("pFourThreeP").value;
+  player4.passTendency = document.getElementById("pFourPassTend").value;
+  
+  player5.name = document.getElementById("pFive").value;
+  player5.passing = document.getElementById("pFivePass").value ;
+  player5.twoPointers = document.getElementById("pFiveTwoP").value;
+  player5.threePointers = document.getElementById("pFiveThreeP").value;
+  player5.passTendency = document.getElementById("pFivePassTend").value;
+  
+  player6.name = document.getElementById("pSix").value;
+  player6.passing = document.getElementById("pSixPass").value ;
+  player6.twoPointers = document.getElementById("pSixTwoP").value;
+  player6.threePointers = document.getElementById("pSixThreeP").value;
+  player6.passTendency = document.getElementById("pSixPassTend").value;
+  
+  player7.name = document.getElementById("pSeven").value;
+  player7.passing = document.getElementById("pSevenPass").value ;
+  player7.twoPointers = document.getElementById("pSevenTwoP").value;
+  player7.threePointers = document.getElementById("pSevenThreeP").value;
+  player7.passTendency = document.getElementById("pSevenPassTend").value;
+  
+  player8.name = document.getElementById("pEight").value;
+  player8.passing = document.getElementById("pEightPass").value ;
+  player8.twoPointers = document.getElementById("pEightTwoP").value;
+  player8.threePointers = document.getElementById("pEightThreeP").value;
+  player8.passTendency = document.getElementById("pEightPassTend").value;
+  
+  player9.name = document.getElementById("pNine").value;
+  player9.passing = document.getElementById("pNinePass").value ;
+  player9.twoPointers = document.getElementById("pNineTwoP").value;
+  player9.threePointers = document.getElementById("pNineThreeP").value;
+  player9.passTendency = document.getElementById("pNinePassTend").value;
+  
+  player10.name = document.getElementById("pTen").value;
+  player10.passing = document.getElementById("pTenPass").value ;
+  player10.twoPointers = document.getElementById("pTenTwoP").value;
+  player10.threePointers = document.getElementById("pTenThreeP").value;
+  player10.passTendency = document.getElementById("pTenPassTend").value;
 }
 
 function teamNameResetButton() {
@@ -121,49 +245,6 @@ function teamNameButton() {
   document.getElementById("name2").innerHTML = team2.name;
   document.getElementById("name4").innerHTML = team2.name;
   document.getElementById("name6").innerHTML = team2.name;
-  }
-}
-
-function playerNameButton() {
-
-  if(document.getElementById("playerOneName").value != "") {
-  player1.name = document.getElementById("playerOneName").value;
-  }
-
-  if(document.getElementById("playerTwoName").value != "") {
-  player2.name = document.getElementById("playerTwoName").value;
-  }
-
-  if(document.getElementById("playerThreeName").value != "") {
-  player3.name = document.getElementById("playerThreeName").value;
-  }
-
-  if(document.getElementById("playerFourName").value != "") {
-  player4.name = document.getElementById("playerFourName").value;
-  }
-
-  if(document.getElementById("playerFiveName").value != "") {
-  player5.name = document.getElementById("playerFiveName").value;
-  }
-
-  if(document.getElementById("playerSixName").value != "") {
-  player6.name = document.getElementById("playerSixName").value;
-  }
-
-  if(document.getElementById("playerSevenName").value != "") {
-  player7.name = document.getElementById("playerSevenName").value;
-  }
-
-  if(document.getElementById("playerEightName").value != "") {
-  player8.name = document.getElementById("playerEightName").value;
-  }
-
-  if(document.getElementById("playerNineName").value != "") {
-  player9.name = document.getElementById("playerNineName").value;
-  }
-  
-  if(document.getElementById("playerTenName").value != "") {
-  player10.name = document.getElementById("playerTenName").value; 
   }
 }
 
@@ -211,36 +292,154 @@ function winner() {
   <button class="button is-dark" onclick="teamNameResetButton()"> Reset </button> 
   <br><br> 
   </div>
-
-
-  <button class="accordion">Click to edit player names</button>
-  <div class="panel">
-  <label for="playerName">Enter player one name</label>
-  <input type="text" id="playerOneName" name="playerOneName"><br><br>
-  <label for="playerName">Enter player two name</label>
-  <input type="text" id="playerTwoName" name="playerTwoName"><br><br>
-  <label for="playerName">Enter player three name</label>
-  <input type="text" id="playerThreeName" name="playerThreeName"><br><br>
-  <label for="playerName">Enter player four name</label>
-  <input type="text" id="playerFourName" name="playerFourName"><br><br>
-  <label for="playerName">Enter player five name</label>
-  <input type="text" id="playerFiveName" name="playerFiveName"><br><br>
-  <label for="playerName">Enter player six name</label>
-  <input type="text" id="playerSixName" name="playerSixName"><br><br>
-  <label for="playerName">Enter player seven name</label>
-  <input type="text" id="playerSevenName" name="playerSevenName"><br><br>
-  <label for="playerName">Enter player eight name</label>
-  <input type="text" id="playerEightName" name="playerEightName"><br><br>
-  <label for="playerName">Enter player nine name</label>
-  <input type="text" id="playerNineName" name="playerNineName"><br><br>
-  <label for="playerName">Enter player ten name</label>
-  <input type="text" id="playerTenName" name="playerTenName"><br><br>
-  <button class="button is-dark" onclick="playerNameButton()"> Update </button>
-  </div>
   
   
-  <button class="accordion">Click to edit player attributes</button>
+  <button class="accordion" id="editAttributes" onclick="editAttributes()">Click to edit player names and attributes</button>
   <div class="panel">
+      <table id="playerAttributes">
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pOne"> </td>
+        <td> <input type="text" id="pOnePass"> </td>
+        <td><input type="text" id ="pOneTwoP"> </td>
+        <td><input type="text" id ="pOneThreeP"> </td>
+        <td><input type="text" id ="pOnePassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pTwo"> </td>
+        <td> <input type="text" id="pTwoPass"> </td>
+        <td><input type="text" id ="pTwoTwoP"> </td>
+        <td><input type="text" id ="pTwoThreeP"> </td>
+        <td><input type="text" id ="pTwoPassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pThree"> </td>
+        <td> <input type="text" id="pThreePass"> </td>
+        <td><input type="text" id ="pThreeTwoP"> </td>
+        <td><input type="text" id ="pThreeThreeP"> </td>
+        <td><input type="text" id ="pThreePassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pFour"> </td>
+        <td> <input type="text" id="pFourPass"> </td>
+        <td><input type="text" id ="pFourTwoP"> </td>
+        <td><input type="text" id ="pFourThreeP"> </td>
+        <td><input type="text" id ="pFourPassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pFive"> </td>
+        <td> <input type="text" id="pFivePass"> </td>
+        <td><input type="text" id ="pFiveTwoP"> </td>
+        <td><input type="text" id ="pFiveThreeP"> </td>
+        <td><input type="text" id ="pFivePassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pSix"> </td>
+        <td> <input type="text" id="pSixPass"> </td>
+        <td><input type="text" id ="pSixTwoP"> </td>
+        <td><input type="text" id ="pSixThreeP"> </td>
+        <td><input type="text" id ="pSixPassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pSeven"> </td>
+        <td> <input type="text" id="pSevenPass"> </td>
+        <td><input type="text" id ="pSevenTwoP"> </td>
+        <td><input type="text" id ="pSevenThreeP"> </td>
+        <td><input type="text" id ="pSevenPassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pEight"> </td>
+        <td> <input type="text" id="pEightPass"> </td>
+        <td><input type="text" id ="pEightTwoP"> </td>
+        <td><input type="text" id ="pEightThreeP"> </td>
+        <td><input type="text" id ="pEightPassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pNine"> </td>
+        <td> <input type="text" id="pNinePass"> </td>
+        <td><input type="text" id ="pNineTwoP"> </td>
+        <td><input type="text" id ="pNineThreeP"> </td>
+        <td><input type="text" id ="pNinePassTend"> </td>    
+      </tr>
+      <tr>
+        <td> <b> Name </b> </td>
+        <td> <b> Passing </b> </td>
+        <td> <b> Two points </b> </td>
+        <td> <b> Three points </b> </td>
+        <td> <b> Pass tendency </b> </td>
+      </tr>
+       <tr>
+	<td> <input type="text" id="pTen"> </td>
+        <td> <input type="text" id="pTenPass"> </td>
+        <td><input type="text" id ="pTenTwoP"> </td>
+        <td><input type="text" id ="pTenThreeP"> </td>
+        <td><input type="text" id ="pTenPassTend"> </td>    
+      </tr>
+    </table>
+
+    <button class="button is-dark" onclick="editAttributesUpdate()"> Update </button>
     
     <button class="button is-dark" onclick="randomiserButton()"> Randomise attributes </button>
   </div>
@@ -418,5 +617,5 @@ function winner() {
       </div>
 
   </body>
-<script type="text/javascript" src="bballsandbox.js"></script>
+<script type="text/javascript" src="input.js"></script>
 </html>
