@@ -118,17 +118,65 @@ function playerAttributeRandomiser(player){
 
 function randomiserButton() {
   playerAttributeRandomiser(player1);
-  playerAttributeRandomiser(player2);
-  playerAttributeRandomiser(player3);
-  playerAttributeRandomiser(player4);
-  playerAttributeRandomiser(player5);
-  playerAttributeRandomiser(player6);
-  playerAttributeRandomiser(player7);
-  playerAttributeRandomiser(player8);
-  playerAttributeRandomiser(player9);
-  playerAttributeRandomiser(player10);
-}
+  document.getElementById("pOnePass").value = player1.passing;
+  document.getElementById("pOneTwoP").value = player1.twoPointers;
+  document.getElementById("pOneThreeP").value = player1.threePointers;
+  document.getElementById("pOnePassTend").value = player1.passTendency;
 
+  playerAttributeRandomiser(player2);
+  document.getElementById("pTwoPass").value = player2.passing;
+  document.getElementById("pTwoTwoP").value = player2.twoPointers;
+  document.getElementById("pTwoThreeP").value = player2.threePointers;
+  document.getElementById("pTwoPassTend").value = player2.passTendency;
+
+  playerAttributeRandomiser(player3);
+  document.getElementById("pThreePass").value = player3.passing;
+  document.getElementById("pThreeTwoP").value = player3.twoPointers;
+  document.getElementById("pThreeThreeP").value = player3.threePointers;
+  document.getElementById("pThreePassTend").value = player3.passTendency;
+
+  playerAttributeRandomiser(player4);
+  document.getElementById("pFourPass").value = player4.passing;
+  document.getElementById("pFourTwoP").value = player4.twoPointers;
+  document.getElementById("pFourThreeP").value = player4.threePointers;
+  document.getElementById("pFourPassTend").value = player4.passTendency;
+
+  playerAttributeRandomiser(player5);
+  document.getElementById("pFivePass").value = player5.passing;
+  document.getElementById("pFiveTwoP").value = player5.twoPointers;
+  document.getElementById("pFiveThreeP").value = player5.threePointers;
+  document.getElementById("pFivePassTend").value = player5.passTendency;
+
+  playerAttributeRandomiser(player6);
+  document.getElementById("pSixPass").value = player6.passing;
+  document.getElementById("pSixTwoP").value = player6.twoPointers;
+  document.getElementById("pSixThreeP").value = player6.threePointers;
+  document.getElementById("pSixPassTend").value = player6.passTendency;
+
+  playerAttributeRandomiser(player7);
+  document.getElementById("pSevenPass").value = player7.passing;
+  document.getElementById("pSevenTwoP").value = player7.twoPointers;
+  document.getElementById("pSevenThreeP").value = player7.threePointers;
+  document.getElementById("pSevenPassTend").value = player7.passTendency;
+
+  playerAttributeRandomiser(player8);
+  document.getElementById("pEightPass").value = player8.passing;
+  document.getElementById("pEightTwoP").value = player8.twoPointers;
+  document.getElementById("pEightThreeP").value = player8.threePointers;
+  document.getElementById("pEightPassTend").value = player8.passTendency;
+
+  playerAttributeRandomiser(player9);
+  document.getElementById("pNinePass").value = player9.passing;
+  document.getElementById("pNineTwoP").value = player9.twoPointers;
+  document.getElementById("pNineThreeP").value = player9.threePointers;
+  document.getElementById("pNinePassTend").value = player9.passTendency;
+
+  playerAttributeRandomiser(player10);
+  document.getElementById("pTenPass").value = player10.passing;
+  document.getElementById("pTenTwoP").value = player10.twoPointers;
+  document.getElementById("pTenThreeP").value = player10.threePointers;
+  document.getElementById("pTenPassTend").value = player10.passTendency;
+}
 
 function allStats() {
   percentages(player1);
