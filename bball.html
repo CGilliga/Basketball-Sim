@@ -10,7 +10,7 @@
   <body>
 
 <script type="text/javascript"> 
-	
+  
   function displayStats() {
   document.getElementById("playerOne").innerHTML = player1.name;
   document.getElementById("playerOnePoints").innerHTML = player1.points;
@@ -102,7 +102,7 @@ function editAttributes() {
   document.getElementById("pOneTwoP").value = player1.twoPointers;
   document.getElementById("pOneThreeP").value = player1.threePointers;
   document.getElementById("pOnePassTend").value = player1.passTendency;
-  
+
   document.getElementById("pTwo").value = player2.name;
   document.getElementById("pTwoPass").value = player2.passing;
   document.getElementById("pTwoTwoP").value = player2.twoPointers;
@@ -160,64 +160,178 @@ function editAttributes() {
 
 function editAttributesUpdate() {
   player1.name = document.getElementById("pOne").value;
+
+  if (document.getElementById("pOnePass").value != "" && !isNaN(document.getElementById("pOnePass").value)
+    &&  document.getElementById("pOnePass").value > 0 && document.getElementById("pOnePass").value < 11) {
   player1.passing = document.getElementById("pOnePass").value;
+  }
+  if (document.getElementById("pOneTwoP").value != "" && !isNaN(document.getElementById("pOneTwoP").value)
+    && document.getElementById("pOneTwoP").value > 0 && document.getElementById("pOneTwoP").value < 11) {
   player1.twoPointers = document.getElementById("pOneTwoP").value;
+  }
+  if (document.getElementById("pOneThreeP").value != "" && !isNaN(document.getElementById("pOneThreeP").value)
+    && document.getElementById("pOneThreeP").value > 0 && document.getElementById("pOneThreeP").value < 11) {
   player1.threePointers = document.getElementById("pOneThreeP").value;
+  }
+  if (document.getElementById("pOnePassTend").value != "" && !isNaN(document.getElementById("pOnePassTend").value)
+    && document.getElementById("pOnePassTend").value > 0 && document.getElementById("pOnePassTend").value < 11) {
   player1.passTendency = document.getElementById("pOnePassTend").value;
- 
+  }
+
   player2.name = document.getElementById("pTwo").value;
-  player2.passing = document.getElementById("pTwoPass").value ;
+
+  if (document.getElementById("pTwoPass").value != "" && !isNaN(document.getElementById("pTwoPass").value)
+    && document.getElementById("pTwoPass").value > 0 && document.getElementById("pTwoPass").value < 11) {
+  player2.passing = document.getElementById("pTwoPass").value;
+  }
+  if (document.getElementById("pTwoTwoP").value != "" && !isNaN(document.getElementById("pTwoTwoP").value) 
+    && document.getElementById("pTwoTwoP").value > 0 && document.getElementById("pTwoTwoP").value < 11) {
   player2.twoPointers = document.getElementById("pTwoTwoP").value;
+  }
+  if (document.getElementById("pTwoThreeP").value != "" && !isNaN(document.getElementById("pTwoThreeP").value)
+    && document.getElementById("pTwoThreeP").value > 0 && document.getElementById("pTwoThreeP").value < 11) {
   player2.threePointers = document.getElementById("pTwoThreeP").value;
+  }
+  if (document.getElementById("pTwoPassTend").value != "" && !isNaN(document.getElementById("pTwoPassTend").value)
+    && document.getElementById("pTwoPassTend").value > 0 && document.getElementById("pTwoPassTend").value < 11) {
   player2.passTendency = document.getElementById("pTwoPassTend").value;
-  
+  }
+
   player3.name = document.getElementById("pThree").value;
-  player3.passing = document.getElementById("pThreePass").value ;
+  if (document.getElementById("pThreePass").value != "" && !isNaN(document.getElementById("pThreePass").value)
+    && document.getElementById("pThreePass").value > 0 && document.getElementById("pThreePass").value < 11) {
+  player3.passing = document.getElementById("pThreePass").value;
+  }
+  if (document.getElementById("pThreeTwoP").value != "" && !isNaN(document.getElementById("pThreeTwoP").value) 
+    && document.getElementById("pThreeTwoP").value > 0 && document.getElementById("pThreeTwoP").value < 11) {
   player3.twoPointers = document.getElementById("pThreeTwoP").value;
+  }
+  if (document.getElementById("pThreeThreeP").value != "" && !isNaN(document.getElementById("pThreeThreeP").value)
+    && document.getElementById("pThreeThreeP").value > 0 && document.getElementById("pThreeThreeP").value < 11) {
   player3.threePointers = document.getElementById("pThreeThreeP").value;
+  }
+  if (document.getElementById("pThreePassTend").value != "" && !isNaN(document.getElementById("pThreePassTend").value) && document.getElementById("pThreePassTend").value > 0 && document.getElementById("pThreePassTend").value < 11) {
   player3.passTendency = document.getElementById("pThreePassTend").value;
-  
+  }
+
   player4.name = document.getElementById("pFour").value;
-  player4.passing = document.getElementById("pFourPass").value ;
+  if (document.getElementById("pFourPass").value != "" && !isNaN(document.getElementById("pFourPass").value)
+    && document.getElementById("pFourPass").value > 0 && document.getElementById("pFourPass").value < 11) {
+  player4.passing = document.getElementById("pFourPass").value;
+  }
+  if (document.getElementById("pFourTwoP").value != "" && !isNaN(document.getElementById("pFourTwoP").value) 
+    && document.getElementById("pFourTwoP").value > 0 && document.getElementById("pFourTwoP").value < 11) {
   player4.twoPointers = document.getElementById("pFourTwoP").value;
+  }
+  if (document.getElementById("pFourThreeP").value != "" && !isNaN(document.getElementById("pFourThreeP").value)
+    && document.getElementById("pFourThreeP").value > 0 && document.getElementById("pFourThreeP").value < 11) {
   player4.threePointers = document.getElementById("pFourThreeP").value;
+  }
+  if (document.getElementById("pFourPassTend").value != "" && !isNaN(document.getElementById("pFourPassTend").value) && document.getElementById("pFourPassTend").value > 0 && document.getElementById("pFourPassTend").value < 11) {
   player4.passTendency = document.getElementById("pFourPassTend").value;
+  }
   
   player5.name = document.getElementById("pFive").value;
-  player5.passing = document.getElementById("pFivePass").value ;
+  if (document.getElementById("pFivePass").value != "" && !isNaN(document.getElementById("pFivePass").value)
+    && document.getElementById("pFivePass").value > 0 && document.getElementById("pFivePass").value < 11) {
+  player5.passing = document.getElementById("pFivePass").value;
+  }
+  if (document.getElementById("pFiveTwoP").value != "" && !isNaN(document.getElementById("pFiveTwoP").value) 
+    && document.getElementById("pFiveTwoP").value > 0 && document.getElementById("pFiveTwoP").value < 11) {
   player5.twoPointers = document.getElementById("pFiveTwoP").value;
+  }
+  if (document.getElementById("pFiveThreeP").value != "" && !isNaN(document.getElementById("pFiveThreeP").value)
+    && document.getElementById("pFiveThreeP").value > 0 && document.getElementById("pFiveThreeP").value < 11) {
   player5.threePointers = document.getElementById("pFiveThreeP").value;
+  }
+  if (document.getElementById("pFivePassTend").value != "" && !isNaN(document.getElementById("pFivePassTend").value) && document.getElementById("pFivePassTend").value > 0 && document.getElementById("pFivePassTend").value < 11) {
   player5.passTendency = document.getElementById("pFivePassTend").value;
+  }
   
   player6.name = document.getElementById("pSix").value;
-  player6.passing = document.getElementById("pSixPass").value ;
+  if (document.getElementById("pSixPass").value != "" && !isNaN(document.getElementById("pSixPass").value)
+    && document.getElementById("pSixPass").value > 0 && document.getElementById("pSixPass").value < 11) {
+  player6.passing = document.getElementById("pSixPass").value;
+  }
+  if (document.getElementById("pSixTwoP").value != "" && !isNaN(document.getElementById("pSixTwoP").value) 
+    && document.getElementById("pSixTwoP").value > 0 && document.getElementById("pSixTwoP").value < 11) {
   player6.twoPointers = document.getElementById("pSixTwoP").value;
+  }
+  if (document.getElementById("pSixThreeP").value != "" && !isNaN(document.getElementById("pSixThreeP").value)
+    && document.getElementById("pSixThreeP").value > 0 && document.getElementById("pSixThreeP").value < 11) {
   player6.threePointers = document.getElementById("pSixThreeP").value;
+  }
+  if (document.getElementById("pSixPassTend").value != "" && !isNaN(document.getElementById("pSixPassTend").value) && document.getElementById("pSixPassTend").value > 0 && document.getElementById("pSixPassTend").value < 11) {
   player6.passTendency = document.getElementById("pSixPassTend").value;
+  }
   
   player7.name = document.getElementById("pSeven").value;
-  player7.passing = document.getElementById("pSevenPass").value ;
+  if (document.getElementById("pSevenPass").value != "" && !isNaN(document.getElementById("pSevenPass").value)
+    && document.getElementById("pSevenPass").value > 0 && document.getElementById("pSevenPass").value < 11) {
+  player7.passing = document.getElementById("pSevenPass").value;
+  }
+  if (document.getElementById("pSevenTwoP").value != "" && !isNaN(document.getElementById("pSevenTwoP").value) 
+    && document.getElementById("pSevenTwoP").value > 0 && document.getElementById("pSevenTwoP").value < 11) {
   player7.twoPointers = document.getElementById("pSevenTwoP").value;
+  }
+  if (document.getElementById("pSevenThreeP").value != "" && !isNaN(document.getElementById("pSevenThreeP").value)
+    && document.getElementById("pSevenThreeP").value > 0 && document.getElementById("pSevenThreeP").value < 11) {
   player7.threePointers = document.getElementById("pSevenThreeP").value;
+  }
+  if (document.getElementById("pSevenPassTend").value != "" && !isNaN(document.getElementById("pSevenPassTend").value) && document.getElementById("pSevenPassTend").value > 0 && document.getElementById("pSevenPassTend").value < 11) {
   player7.passTendency = document.getElementById("pSevenPassTend").value;
+  }
   
   player8.name = document.getElementById("pEight").value;
-  player8.passing = document.getElementById("pEightPass").value ;
+  if (document.getElementById("pEightPass").value != "" && !isNaN(document.getElementById("pEightPass").value)
+    && document.getElementById("pEightPass").value > 0 && document.getElementById("pEightPass").value < 11) {
+  player8.passing = document.getElementById("pEightPass").value;
+  }
+  if (document.getElementById("pEightTwoP").value != "" && !isNaN(document.getElementById("pEightTwoP").value) 
+    && document.getElementById("pEightTwoP").value > 0 && document.getElementById("pEightTwoP").value < 11) {
   player8.twoPointers = document.getElementById("pEightTwoP").value;
+  }
+  if (document.getElementById("pEightThreeP").value != "" && !isNaN(document.getElementById("pEightThreeP").value)
+    && document.getElementById("pEightThreeP").value > 0 && document.getElementById("pEightThreeP").value < 11) {
   player8.threePointers = document.getElementById("pEightThreeP").value;
+  }
+  if (document.getElementById("pEightPassTend").value != "" && !isNaN(document.getElementById("pEightPassTend").value) && document.getElementById("pEightPassTend").value > 0 && document.getElementById("pEightPassTend").value < 11) {
   player8.passTendency = document.getElementById("pEightPassTend").value;
+  }
   
   player9.name = document.getElementById("pNine").value;
-  player9.passing = document.getElementById("pNinePass").value ;
+  if (document.getElementById("pNinePass").value != "" && !isNaN(document.getElementById("pNinePass").value)
+    && document.getElementById("pNinePass").value > 0 && document.getElementById("pNinePass").value < 11) {
+  player9.passing = document.getElementById("pNinePass").value;
+  }
+  if (document.getElementById("pNineTwoP").value != "" && !isNaN(document.getElementById("pNineTwoP").value) 
+    && document.getElementById("pNineTwoP").value > 0 && document.getElementById("pNineTwoP").value < 11) {
   player9.twoPointers = document.getElementById("pNineTwoP").value;
+  }
+  if (document.getElementById("pNineThreeP").value != "" && !isNaN(document.getElementById("pNineThreeP").value)
+    && document.getElementById("pNineThreeP").value > 0 && document.getElementById("pNineThreeP").value < 11) {
   player9.threePointers = document.getElementById("pNineThreeP").value;
+  }
+  if (document.getElementById("pNinePassTend").value != "" && !isNaN(document.getElementById("pNinePassTend").value) && document.getElementById("pNinePassTend").value > 0 && document.getElementById("pNinePassTend").value < 11) {
   player9.passTendency = document.getElementById("pNinePassTend").value;
+  }
   
   player10.name = document.getElementById("pTen").value;
-  player10.passing = document.getElementById("pTenPass").value ;
+  if (document.getElementById("pTenPass").value != "" && !isNaN(document.getElementById("pTenPass").value)
+    && document.getElementById("pTenPass").value > 0 && document.getElementById("pTenPass").value < 11) {
+  player10.passing = document.getElementById("pTenPass").value;
+  }
+  if (document.getElementById("pTenTwoP").value != "" && !isNaN(document.getElementById("pTenTwoP").value) 
+    && document.getElementById("pTenTwoP").value > 0 && document.getElementById("pTenTwoP").value < 11) {
   player10.twoPointers = document.getElementById("pTenTwoP").value;
+  }
+  if (document.getElementById("pTenThreeP").value != "" && !isNaN(document.getElementById("pTenThreeP").value)
+    && document.getElementById("pTenThreeP").value > 0 && document.getElementById("pTenThreeP").value < 11) {
   player10.threePointers = document.getElementById("pTenThreeP").value;
+  }
+  if (document.getElementById("pTenPassTend").value != "" && !isNaN(document.getElementById("pTenPassTend").value) && document.getElementById("pTenPassTend").value > 0 && document.getElementById("pTenPassTend").value < 11) {
   player10.passTendency = document.getElementById("pTenPassTend").value;
+  }
 }
 
 function teamNameResetButton() {
@@ -305,7 +419,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pOne"> </td>
+  <td> <input type="text" id="pOne"> </td>
         <td> <input type="text" id="pOnePass"> </td>
         <td><input type="text" id ="pOneTwoP"> </td>
         <td><input type="text" id ="pOneThreeP"> </td>
@@ -319,7 +433,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pTwo"> </td>
+  <td> <input type="text" id="pTwo"> </td>
         <td> <input type="text" id="pTwoPass"> </td>
         <td><input type="text" id ="pTwoTwoP"> </td>
         <td><input type="text" id ="pTwoThreeP"> </td>
@@ -333,7 +447,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pThree"> </td>
+  <td> <input type="text" id="pThree"> </td>
         <td> <input type="text" id="pThreePass"> </td>
         <td><input type="text" id ="pThreeTwoP"> </td>
         <td><input type="text" id ="pThreeThreeP"> </td>
@@ -347,7 +461,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pFour"> </td>
+  <td> <input type="text" id="pFour"> </td>
         <td> <input type="text" id="pFourPass"> </td>
         <td><input type="text" id ="pFourTwoP"> </td>
         <td><input type="text" id ="pFourThreeP"> </td>
@@ -361,7 +475,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pFive"> </td>
+  <td> <input type="text" id="pFive"> </td>
         <td> <input type="text" id="pFivePass"> </td>
         <td><input type="text" id ="pFiveTwoP"> </td>
         <td><input type="text" id ="pFiveThreeP"> </td>
@@ -375,7 +489,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pSix"> </td>
+  <td> <input type="text" id="pSix"> </td>
         <td> <input type="text" id="pSixPass"> </td>
         <td><input type="text" id ="pSixTwoP"> </td>
         <td><input type="text" id ="pSixThreeP"> </td>
@@ -389,7 +503,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pSeven"> </td>
+  <td> <input type="text" id="pSeven"> </td>
         <td> <input type="text" id="pSevenPass"> </td>
         <td><input type="text" id ="pSevenTwoP"> </td>
         <td><input type="text" id ="pSevenThreeP"> </td>
@@ -403,7 +517,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pEight"> </td>
+  <td> <input type="text" id="pEight"> </td>
         <td> <input type="text" id="pEightPass"> </td>
         <td><input type="text" id ="pEightTwoP"> </td>
         <td><input type="text" id ="pEightThreeP"> </td>
@@ -417,7 +531,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pNine"> </td>
+  <td> <input type="text" id="pNine"> </td>
         <td> <input type="text" id="pNinePass"> </td>
         <td><input type="text" id ="pNineTwoP"> </td>
         <td><input type="text" id ="pNineThreeP"> </td>
@@ -431,7 +545,7 @@ function winner() {
         <td> <b> Pass tendency </b> </td>
       </tr>
        <tr>
-	<td> <input type="text" id="pTen"> </td>
+  <td> <input type="text" id="pTen"> </td>
         <td> <input type="text" id="pTenPass"> </td>
         <td><input type="text" id ="pTenTwoP"> </td>
         <td><input type="text" id ="pTenThreeP"> </td>
@@ -617,5 +731,5 @@ function winner() {
       </div>
 
   </body>
-<script type="text/javascript" src="input.js"></script>
+<script type="text/javascript" src="bball.js"></script>
 </html>
