@@ -393,11 +393,53 @@ function winner() {
 
 </script>
   <div class="content">
-    <h1>Basketball Simulator</h1>
+    <h2 class="has-text-centered">Basketball Simulator</h2>
+  </div>
 
+  <div class="columns is-centered">
+    <div class="column has-text-centered">
+      <p> This basketball simulator has 5 players on each team with randomly selected stats, you can: </p>
+        <ul>
+          <li>Simulate a game</li>
+          <li>View the statistics from that game</li>
+          <li>Edit team names</li>
+          <li>Edit player names</li>
+          <li>Edit and randomise player attributes</li>
+          <li>Read the play-by-play events of the simulated game</li>
+        </ul>
+    </div>
+  </div>
+
+   <div class="content has-text-centered">
+    <h1> <span id="winner"></span> </h1> 
+  </div>
+
+    <div class="columns is-size-2">
+      <div class="column is-one-fifth has-text-centered">
+      <h3 id="name1"> Team 1 </h3>
+        <div class="score is-size-1"> <span id="teamOneScore"> 00 </span>
+        </div>
+      </div>
+      <div class="column is-one-fifth has-text-centered">
+      <h3 id="name2"> Team 2 </h3>
+        <div class="score is-size-1"> <span id="teamTwoScore"> 00 </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="columns is-size-2">
+     <div class="column is-one-fifth has-text-centered">
+      <button class="button is-dark" onclick="startButton()"> Start Game </button>
+     </div>
+     <div class="column is-one-fifth has-text-centered">
+      <button class="button is-dark" onclick="resetButton()"> Reset </button>
+   </div>
+  </div> 
 
   <button class="accordion">Click to edit team names</button>
   <div class="panel">
+    <br>
   <label for="teamName">Enter team one name</label>
   <input type="text" id="teamOneName" name="teamOneName"><br><br>
   <label for="teamName">Enter team two name</label>
@@ -410,6 +452,7 @@ function winner() {
   
   <button class="accordion" id="editAttributes" onclick="editAttributes()">Click to edit player names and attributes</button>
   <div class="panel">
+    <br>
       <table id="playerAttributes">
       <tr>
         <td> <b> Name </b> </td>
@@ -554,30 +597,12 @@ function winner() {
     </table>
 
     <button class="button is-dark" onclick="editAttributesUpdate()"> Update </button>
-    
     <button class="button is-dark" onclick="randomiserButton()"> Randomise attributes </button>
     <br><br>
   </div>
 
-    <div class="columns is-size-2">
-      <div class="column is-one-fifth has-text-centered">
-      <h3 id="name1"> Team 1 </h3>
-        <div class="score is-size-1"> <span id="teamOneScore"> 00 </span>
-        </div>
-      </div>
-      <div class="column is-one-fifth has-text-centered">
-      <h3 id="name2"> Team 2 </h3>
-        <div class="score is-size-1"> <span id="teamTwoScore"> 00 </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-   <div class="content">
-    <h1> <span id="winner"></span> </h1>  
-   <button class="button is-dark" onclick="startButton()"> Start Game </button>
-   <button class="button is-dark" onclick="resetButton()"> Reset </button>
-   </div>
+  <button class="accordion">Click to display stats</button>
+  <div class="panel">
      <h2>Player Stats</h2> 
     <table id="boxScore">
       <tr>
@@ -723,8 +748,8 @@ function winner() {
         <td><span id ="teamTwoThreePointPercentage"> </span></td>
       </tr>
     </table>
-
   <br>
+</div>
     
       <button class="accordion">Click to display play-by-play</button>
       <div class="panel">
@@ -732,5 +757,5 @@ function winner() {
       </div>
 
   </body>
-<script type="text/javascript" src="bballsandbox.js"></script>
+<script type="text/javascript" src="bball.js"></script>
 </html>
